@@ -13,43 +13,46 @@
 <body>
     <div class="container">
         <h2>Billing Details</h1>
-        <form>
-          <div class="form-group">
-            <label for="firstName">First Name</label>
-            <input type="text" class="form-control" id="firstName" placeholder="Enter your first name">
-          </div>
-          <div class="form-group">
-            <label for="companyName">Company Name</label>
-            <input type="text" class="form-control" id="companyName" placeholder="Enter your company name">
-          </div>
-          <div class="form-group">
-            <label for="streetAddress">Street Address</label>
-            <input type="text" class="form-control" id="streetAddress" placeholder="Enter your street address">
-          </div>
-          <div class="form-group">
-            <label for="apartment">Apartment, floor, etc. (optional)</label>
-            <input type="text" class="form-control" id="apartment" placeholder="Enter additional address details">
-          </div>
-          <div class="form-group">
-            <label for="city">Town/City</label>
-            <input type="text" class="form-control" id="city" placeholder="Enter your town or city">
-          </div>
-          <div class="form-group">
-            <label for="phoneNumber">Phone Number</label>
-            <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter your phone number">
-          </div>
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter your email address">
-          </div>
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="saveInfo">
-            <label class="form-check-label" for="saveInfo">Save this information for faster check-out next time</label>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-      </div>
-      <body>
+            <form>
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="Enter your first name">
+                </div>
+                <div class="form-group">
+                    <label for="companyName">Company Name</label>
+                    <input type="text" class="form-control" id="companyName" placeholder="Enter your company name">
+                </div>
+                <div class="form-group">
+                    <label for="streetAddress">Street Address</label>
+                    <input type="text" class="form-control" id="streetAddress" placeholder="Enter your street address">
+                </div>
+                <div class="form-group">
+                    <label for="apartment">Apartment, floor, etc. (optional)</label>
+                    <input type="text" class="form-control" id="apartment"
+                        placeholder="Enter additional address details">
+                </div>
+                <div class="form-group">
+                    <label for="city">Town/City</label>
+                    <input type="text" class="form-control" id="city" placeholder="Enter your town or city">
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email address">
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="saveInfo">
+                    <label class="form-check-label" for="saveInfo">Save this information for faster check-out next
+                        time</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+    </div>
+
+    <body>
         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-6">
@@ -71,35 +74,36 @@
                         </div>
 
                         <div class="caption">
-                                    <br/>
-                                    <h5 >Cart Total</h5>
-                                    <p >Subtotal: $200</p>
-                                    <hr/>
-                                    <p >Shipping: Free</p>
-                                    <hr/>
-                                    <p >Total: $200</p>
-                                    <button class="btn btn-success btn-block">Proceed to Checkout</button>
-                            
+                            <br />
+                            <h5>Cart Total</h5>
+                            <p>Subtotal: $200</p>
+                            <hr />
+                            <p>Shipping: Free</p>
+                            <hr />
+                            <p>Total: $200</p>
+                            <button class="btn btn-success btn-block">Proceed to Checkout</button>
+
                         </div>
                     </div>
                 </div>
                 <!-- Repeat similar structure for other products -->
             </div>
-    
+
             <div class="row mt-4">
                 <div class="col-md-6">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="paymentOption" id="bankPayment" value="bank">
                         <label class="form-check-label" for="bankPayment">Bank</label>
-                        <img id="image" src="assets/checkout-images/bank.png"/>
+                        <img id="image" src="assets/checkout-images/bank.png" />
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="paymentOption" id="cashOnDelivery" value="cash">
+                        <input class="form-check-input" type="radio" name="paymentOption" id="cashOnDelivery"
+                            value="cash">
                         <label class="form-check-label" for="cashOnDelivery">Cash on Delivery</label>
                     </div>
                 </div>
             </div>
-    
+
             <div class="row mt-4">
                 <div class="col-md-6">
                     <div class="input-group">
@@ -110,16 +114,16 @@
                     </div>
                 </div>
             </div>
-    
+
             <div class="row mt-4">
                 <div class="col-md-6">
                     <button class="btn btn-success btn-lg btn-block">Place Order</button>
                 </div>
             </div>
         </div>
-      
-    <script src="./assets/JS/bootstrap.min.js"></script>
-    <script src="./assets/JS/checkout.js"></script>
-</body>
+
+        <script src="./assets/JS/bootstrap.min.js"></script>
+        <script src="./assets/JS/checkout.js"></script>
+    </body>
 
 </html>
