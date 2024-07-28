@@ -1,0 +1,6 @@
+@import "colors.css";
+.bg-nav,
+.footer {
+  background-color: var(--primary-color);
+  color: #fff;
+}
