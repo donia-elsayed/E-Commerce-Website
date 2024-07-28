@@ -27,3 +27,9 @@
 .coupon {
   margin-right: 30px;
 }
+
+
+
+.form-control:focus {
+  border: solid 2px var(--primary-color);
+}
