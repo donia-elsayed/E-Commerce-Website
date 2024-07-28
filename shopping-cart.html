@@ -15,48 +15,62 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col" >Product</th>
-                    <th scope="col" >Price</th>
-                    <th scope="col" class="col-md-2"  >Quantity</th>
-                    <th scope="col" >Subtotal</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Price</th>
+                    <th scope="col" class="col-md-2">Quantity</th>
+                    <th scope="col">Subtotal</th>
                 </tr>
             </thead>
             <tbody>
                 <tr class="align-middle">
-                    <td><img src="assets/checkout-images/TV.png" alt="LCD Monitor"
-                            width="75" /> LCD Monitor</td>
+                    <td><img src="assets/checkout-images/TV.png" alt="LCD Monitor" width="75" /> LCD Monitor</td>
                     <td>$650</td>
-                    <td><input type="number" class="form-control"   name="quantity"  min="0" value="0"></td>
+                    <td><input type="number" class="form-control" name="quantity" min="0" value="0"></td>
                     <td>$650</td>
                 </tr>
             </tbody>
         </table>
-    <div class="d-flex justify-content-between">
-        <div >
-            <!-- Coupon code input -->
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Coupon Code">
-                <div class="input-group-append">
-                    <button class="btn btn-apply" type="button">Apply Coupon</button>
+
+
+        <div class="container">
+            <div class="row">
+                <!-- Coupon code input -->
+                <div class="col-md-6 mb-3">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Enter Coupon Code">
+                        <div class="input-group-append ml-2">
+                            <button class="btn btn-apply" type="button">Apply Coupon</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <!-- Cart totals -->
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Cart Total</h5>
-                    <p class="card-text">Subtotal: $200</p>
-                    <hr />
-                    <p class="card-text">Shipping: Free</p>
-                    <hr />
-                    <p class="card-text">Total: $200</p>
-                    <button  class="btn btn-success btn-block btn-apply" >Proceed to Checkout</button>
+
+                <!-- Cart totals -->
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Cart Total</h5>
+                            <div class="d-flex justify-content-between">
+                                <p class="card-text">Subtotal:</p>
+                                <p class="card-text">$200</p>
+                            </div>
+                            <hr />
+                            <div class="d-flex justify-content-between">
+                                <p class="card-text">Shipping:</p>
+                                <p class="card-text">Free</p>
+                            </div>
+                            <hr />
+                            <div class="d-flex justify-content-between">
+                                <p class="card-text">Total:</p>
+                                <p class="card-text">$200</p>
+                            </div>
+                            <button class="btn btn-success btn-block mt-3 btn-apply">Proceed to Checkout</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
-    <script src="./assets/JS/bootstrap.min.js"></script>
-    <script src="./assets/JS/shopping-cart.js"></script>
+        <script src="./assets/JS/bootstrap.min.js"></script>
+        <script src="./assets/JS/shopping-cart.js"></script>
 </body>
 
 </html>
