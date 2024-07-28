@@ -1,30 +1,29 @@
-
 @import "colors.css";
 
-.btn-apply{
-    color: white;
-    background-color: var(--primary-color);
-    border: solid 2px var(--primary-color);
-    transition: background-color 0.3s ease;
+.btn-apply {
+  color: white;
+  background-color: var(--primary-color);
+  border: solid 2px var(--primary-color);
+  transition: background-color 0.3s ease;
 }
 
-.btn-apply:hover{
-    color: white;
-    background-color: #f85981;
-    border: solid 2px var(--primary-color);
+.btn-apply:hover {
+  color: white;
+  background-color: #f85981;
+  border: solid 2px var(--primary-color);
 
 }
 
 
- * {
-font-family: Poppins;
-font-size: 15px;
-font-weight: 400;
-line-height: 24px;
+* {
+  font-family: Poppins;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 24px;
 
-   }
- 
+}
 
-   .coupon {
-    margin-right:30px ;
-  }
+
+.coupon {
+  margin-right: 30px;
+}
