@@ -3,12 +3,14 @@
 .btn-apply{
     color: white;
     background-color: var(--primary-color);
+    border: solid 2px var(--primary-color);
     transition: background-color 0.3s ease;
 }
 
 .btn-apply:hover{
     color: white;
     background-color: #f85981;
+    border: solid 2px var(--primary-color);
 
 }
 
