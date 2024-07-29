@@ -1,18 +1,59 @@
 @import "colors.css";
 
+.btn-apply1 {
+  color: var(--secondary-color);
+  font-weight: 500;
+  background-color: white;
+  border: solid 2px var(--secondary-color);
+  transition: background-color 0.3s ease;
+}
+
+.btn-apply1:hover {
+  color: #4498e6;
+  background-color: white;
+  border: solid 2px #4498e6;
+
+}
+
+.btn-apply1::after {
+  color: var(--secondary-color);
+  font-weight: 500;
+  background-color: white;
+  border: solid 2px var(--secondary-color);
+  transition: background-color 0.3s ease;
+}
+
+
+
+
 .btn-apply {
   color: white;
-  background-color: var(--primary-color);
-  border: solid 2px var(--primary-color);
+  background-color: var(--secondary-color);
+  border: solid 2px var(--secondary-color);
   transition: background-color 0.3s ease;
 }
 
 .btn-apply:hover {
   color: white;
-  background-color: #f85981;
-  border: solid 2px var(--primary-color);
+  background-color: #4498e6;
+  border: solid 2px var(--secondary-color);
 
 }
+
+.btn-apply:active {
+  color: white;
+  background-color: var(--secondary-color);
+  border: solid 2px var(--secondary-color);
+}
+
+.btn-apply:focus{
+  color: white;
+  background-color: var(--secondary-color);
+  border: solid 2px var(--secondary-color);
+}
+
+
+
 
 
 * {
@@ -26,10 +67,11 @@
 
 .coupon {
   margin-right: 30px;
+  background-color: var(--bg-color);
 }
 
 
 
 .form-control:focus {
-  border: solid 2px var(--primary-color);
+  background-color: var(--bg-color)
 }
