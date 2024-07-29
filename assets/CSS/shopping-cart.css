@@ -1,5 +1,8 @@
 @import "colors.css";
-
+a {
+  text-decoration: none;
+  color: white;
+}
 .btn-apply1 {
   color: var(--secondary-color);
   font-weight: 500;
