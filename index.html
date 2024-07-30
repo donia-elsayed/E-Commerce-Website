@@ -12,7 +12,252 @@
 
 <body>
     <div data-include="navbar.html"></div>
-    <main class="h-75"></main>
+    <main>
+        <section class="home mt-3">
+            <div class="container">
+                <form class="d-flex my-4 mx-auto w-50" role="search">
+                    <input class="form-control input__search me-2 shadow-none" type="search"
+                        placeholder="What are you looking for?" aria-label="Search">
+                    <i class="fa-solid fa-magnifying-glass m-auto fs-5 search__icon"></i>
+                    <button class="btn btn__search" type="submit">Search</button>
+                </form>
+                <div class="row">
+                    <div class="col-lg-3 home__left-side">
+                        <h2 class="filter-sort___header py-3">Filter & Sort</h2>
+                        <div class="accordion" id="filterAndSort">
+                            <div class="accordion-item py-2">
+                                <h2 class="accordion-header" id="category">
+                                    <button class="accordion-button shadow-none" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#allCategories" aria-expanded="true"
+                                        aria-controls="allCategories">
+                                        Categories
+                                    </button>
+                                </h2>
+                                <div id="allCategories" class="accordion-collapse collapse show"
+                                    aria-labelledby="category" data-bs-parent="#filterAndSort">
+                                    <div class="accordion-body">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="shoes">
+                                            <label class="form-check-label" for="shoes">
+                                                Shoes
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="watches">
+                                            <label class="form-check-label" for="Watches">
+                                                Watches
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="clothese">
+                                            <label class="form-check-label" for="clothese">
+                                                Clothese
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="electronics">
+                                            <label class="form-check-label" for="electronics">
+                                                Electronics
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item py-2">
+                                <h2 class="accordion-header" id="price">
+                                    <button class="accordion-button shadow-none collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#allPrices" aria-expanded="false"
+                                        aria-controls="allPrices">
+                                        Prices
+                                    </button>
+                                </h2>
+                                <div id="allPrices" class="accordion-collapse collapse" aria-labelledby="price"
+                                    data-bs-parent="#filterAndSort">
+                                    <div class="accordion-body">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="asc">
+                                            <label class="form-check-label" for="asc">
+                                                Low to High (ASC)
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="des">
+                                            <label class="form-check-label" for="des">
+                                                High to Low (DES)
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <img src="./assets/images/home/home-img.png" class="w-100" alt="...">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="products my-5">
+            <div class="container">
+                <div class="row mb-4 gx-4">
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="product__img__wrapper text-center rounded-3">
+                            <img src="./assets/images/products/jacket-img.png" alt="">
+                            <div class="d-flex flex-column">
+                                <a href="#"><i class="fa-solid fa-heart mb-2"></i></a>
+                                <a href="#"><i class="fa-solid fa-eye"></i></a>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn__addToCart d-block mx-auto w-100 mt-2">
+                            Add to Cart
+                        </button>
+                        <div class="d-flex justify-content-lg-between my-3">
+                            <h5>Mens Cotton Jacket</h5>
+                            <span class="product__price">50$</span>
+                        </div>
+                        <p>Great outerwear jackets for Spring,Autumn and Winter,suitable for many occasions,
+                            such as working, hiking, camping, cycling,traveling or other outdoors
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="product__img__wrapper text-center rounded-3">
+                            <img src="./assets/images/products/bag-img.png" alt="">
+                            <div class="d-flex flex-column">
+                                <a href="#"><i class="fa-solid fa-heart mb-2"></i></a>
+                                <a href="#"><i class="fa-solid fa-eye"></i></a>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn__addToCart d-block mx-auto w-100 mt-2">
+                            Add to Cart
+                        </button>
+                        <div class="d-flex justify-content-lg-between my-3">
+                            <h5>Mens Cotton Jacket</h5>
+                            <span class="product__price">50$</span>
+                        </div>
+                        <p>Great outerwear jackets for Spring,Autumn and Winter,suitable for many occasions,
+                            such as working, hiking, camping, cycling,traveling or other outdoors
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="product__img__wrapper text-center rounded-3">
+                            <img src="./assets/images/products/jacket-img.png" alt="">
+                            <div class="d-flex flex-column">
+                                <a href="#"><i class="fa-solid fa-heart mb-2"></i></a>
+                                <a href="#"><i class="fa-solid fa-eye"></i></a>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn__addToCart d-block mx-auto w-100 mt-2">
+                            Add to Cart
+                        </button>
+                        <div class="d-flex justify-content-lg-between my-3">
+                            <h5>Mens Cotton Jacket</h5>
+                            <span class="product__price">50$</span>
+                        </div>
+                        <p>Great outerwear jackets for Spring,Autumn and Winter,suitable for many occasions,
+                            such as working, hiking, camping, cycling,traveling or other outdoors
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="product__img__wrapper text-center rounded-3">
+                            <img src="./assets/images/products/bag-img.png" alt="">
+                            <div class="d-flex flex-column">
+                                <a href="#"><i class="fa-solid fa-heart mb-2"></i></a>
+                                <a href="#"><i class="fa-solid fa-eye"></i></a>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn__addToCart d-block mx-auto w-100 mt-2">
+                            Add to Cart
+                        </button>
+                        <div class="d-flex justify-content-lg-between my-3">
+                            <h5>Mens Cotton Jacket</h5>
+                            <span class="product__price">50$</span>
+                        </div>
+                        <p>Great outerwear jackets for Spring,Autumn and Winter,suitable for many occasions,
+                            such as working, hiking, camping, cycling,traveling or other outdoors
+                        </p>
+                    </div>
+                </div>
+                <div class="row mb-4 gx-4">
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="product__img__wrapper text-center rounded-3">
+                            <img src="./assets/images/products/jacket-img.png" alt="">
+                            <div class="d-flex flex-column">
+                                <a href="#"><i class="fa-solid fa-heart mb-2"></i></a>
+                                <a href="#"><i class="fa-solid fa-eye"></i></a>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn__addToCart d-block mx-auto w-100 mt-2">
+                            Add to Cart
+                        </button>
+                        <div class="d-flex justify-content-lg-between my-3">
+                            <h5>Mens Cotton Jacket</h5>
+                            <span class="product__price">50$</span>
+                        </div>
+                        <p>Great outerwear jackets for Spring,Autumn and Winter,suitable for many occasions,
+                            such as working, hiking, camping, cycling,traveling or other outdoors
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="product__img__wrapper text-center rounded-3">
+                            <img src="./assets/images/products/bag-img.png" alt="">
+                            <div class="d-flex flex-column">
+                                <a href="#"><i class="fa-solid fa-heart mb-2"></i></a>
+                                <a href="#"><i class="fa-solid fa-eye"></i></a>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn__addToCart d-block mx-auto w-100 mt-2">
+                            Add to Cart
+                        </button>
+                        <div class="d-flex justify-content-lg-between my-3">
+                            <h5>Mens Cotton Jacket</h5>
+                            <span class="product__price">50$</span>
+                        </div>
+                        <p>Great outerwear jackets for Spring,Autumn and Winter,suitable for many occasions,
+                            such as working, hiking, camping, cycling,traveling or other outdoors
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="product__img__wrapper text-center rounded-3">
+                            <img src="./assets/images/products/jacket-img.png" alt="">
+                            <div class="d-flex flex-column">
+                                <a href="#"><i class="fa-solid fa-heart mb-2"></i></a>
+                                <a href="#"><i class="fa-solid fa-eye"></i></a>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn__addToCart d-block mx-auto w-100 mt-2">
+                            Add to Cart
+                        </button>
+                        <div class="d-flex justify-content-lg-between my-3">
+                            <h5>Mens Cotton Jacket</h5>
+                            <span class="product__price">50$</span>
+                        </div>
+                        <p>Great outerwear jackets for Spring,Autumn and Winter,suitable for many occasions,
+                            such as working, hiking, camping, cycling,traveling or other outdoors
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="product__img__wrapper text-center rounded-3">
+                            <img src="./assets/images/products/bag-img.png" alt="">
+                            <div class="d-flex flex-column">
+                                <a href="#"><i class="fa-solid fa-heart mb-2"></i></a>
+                                <a href="#"><i class="fa-solid fa-eye"></i></a>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn__addToCart d-block mx-auto w-100 mt-2">
+                            Add to Cart
+                        </button>
+                        <div class="d-flex justify-content-lg-between my-3">
+                            <h5>Mens Cotton Jacket</h5>
+                            <span class="product__price">50$</span>
+                        </div>
+                        <p>Great outerwear jackets for Spring,Autumn and Winter,suitable for many occasions,
+                            such as working, hiking, camping, cycling,traveling or other outdoors
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
     <div data-include="footer.html"></div>
     <script src="./assets/JS/bootstrap.min.js"></script>
     <script src="./assets/JS/nav-footer.js"></script>
