@@ -1,80 +1,37 @@
+* {
+  font-family: Poppins;
+  font-weight: 400;
+  line-height: 24px;
+}
+
 @import "colors.css";
 a {
   text-decoration: none;
   color: white;
 }
-.btn-apply1 {
+.btn-apply , .btn-apply:hover {
   color: var(--secondary-color);
-  font-weight: 500;
   background-color: white;
-  border: solid 2px var(--secondary-color);
-  transition: background-color 0.3s ease;
-}
-
-.btn-apply1:hover {
-  color: #4498e6;
-  background-color: white;
-  border: solid 2px #4498e6;
-
-}
-
-.btn-apply1::after {
-  color: var(--secondary-color);
-  font-weight: 500;
-  background-color: white;
-  border: solid 2px var(--secondary-color);
-  transition: background-color 0.3s ease;
+  border: solid 1px var(--secondary-color);
 }
 
 
 
-
-.btn-apply {
+.btn-toCheckout , .btn-toCheckout:hover  , .btn-toCheckout:focus  {
   color: white;
   background-color: var(--secondary-color);
-  border: solid 2px var(--secondary-color);
-  transition: background-color 0.3s ease;
+  border: solid 1px var(--secondary-color);
 }
 
-.btn-apply:hover {
-  color: white;
-  background-color: #4498e6;
-  border: solid 2px var(--secondary-color);
-
-}
-
-.btn-apply:active {
-  color: white;
-  background-color: var(--secondary-color);
-  border: solid 2px var(--secondary-color);
-}
-
-.btn-apply:focus{
-  color: white;
-  background-color: var(--secondary-color);
-  border: solid 2px var(--secondary-color);
-}
-
-
-
-
-
-* {
-  font-family: Poppins;
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 24px;
-
-}
-
-
-.coupon {
+.coupon , .coupon:focus {
   margin-right: 30px;
   background-color: var(--bg-color);
 }
 
+.coupon::placeholder{
+  color: var(--secondary-color);
+}
 
-
-.form-control:focus {
-  background-color: var(--bg-color)
+.product__img{
+  width: 20%;
 }

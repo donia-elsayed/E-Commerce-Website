@@ -11,9 +11,7 @@
     <link rel="stylesheet" href="./assets/CSS/shopping-cart.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -31,18 +29,19 @@
             </thead>
             <tbody>
                 <tr class="align-middle">
-                    <td><img src="assets/checkout-images/TV.png" alt="LCD Monitor" width="75" /> LCD Monitor</td>
+                    <td><img src="assets/checkout-images/TV.png" alt="LCD Monitor" class="product__img" /> LCD Monitor</td>
                     <td>$650</td>
-                    <td><button type="button" class="btn border-secondary text-center">+</button>
-                        <span class="text-center m-2">0</span>
+                    <td>
                         <button type="button" class="btn border-secondary text-center">-</button>
+                        <span class="text-center m-2">0</span>
+                        <button type="button" class="btn border-secondary text-center">+</button>
                     </td>
                     <td>$650</td>
                 </tr>
             </tbody>
             <tbody>
                 <tr class="align-middle">
-                    <td><img src="assets/checkout-images/TV.png" alt="LCD Monitor" width="75" /> LCD Monitor</td>
+                    <td><img src="assets/checkout-images/TV.png" alt="LCD Monitor" class="product__img" /> LCD Monitor</td>
                     <td>$650</td>
                     <td><button type="button" class="btn border-secondary text-center">+</button>
                         <span class="text-center m-2">0</span>
@@ -59,9 +58,9 @@
                 <!-- Coupon code input -->
                 <div class="col-md-6 mb-3">
                     <div class="input-group">
-                        <input type="text" class="form-control coupon" placeholder="Enter Coupon Code">
+                        <input type="text" class="form-control coupon shadow-none" placeholder="Enter Coupon Code">
                         <div class="input-group-append ml-2">
-                            <button class="btn btn-apply1" type="button">Apply Coupon</button>
+                            <button class="btn btn-apply" type="button">Apply Coupon</button>
                         </div>
                     </div>
                 </div>
@@ -85,7 +84,7 @@
                                 <p class="card-text">Total:</p>
                                 <p class="card-text">$200</p>
                             </div>
-                            <button class="btn btn-success btn-block mt-3 btn-apply"><a href="checkout.html">Proceed to Checkout</a></button>
+                            <button class="btn mt-3 btn-toCheckout"><a href="checkout.html">Proceed to Checkout</a></button>
                         </div>
                     </div>
                 </div>
