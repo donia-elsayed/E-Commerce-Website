@@ -45,9 +45,4 @@
 .secondary__color__border {
   border-color: var(--secondary-color)!important;
 }
-.btn__count {
-  color: var(--secondary-color);
-}
-.btn__count__color{
-  background-color: #fff;
-}
+
