@@ -7,12 +7,117 @@
     <link rel="stylesheet" href="./assets/CSS/all.css">
     <link rel="stylesheet" href="./assets/CSS/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/CSS/nav-footer.css">
+    <link rel="stylesheet" href="./assets/CSS/colors.css">
     <link rel="stylesheet" href="./assets/CSS/checkout.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div data-include="navbar.html"></div>
-    <main class="h-75"></main>
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-md-5 mb-3 billing">
+                <h2>Billing Details</h1>
+                    <form>
+                        <div class="form-group">
+                            <label for="firstName" class="labelEdit">Full Name</label>
+                            <input type="text" class="form-control shadow-none input" id="firstName"
+                                placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="labelEdit">Email Address</label>
+                            <input type="email" class="form-control shadow-none input" id="email"
+                                placeholder="Enter your email address">
+                        </div>
+                        <div class="form-group">
+                            <label for="phoneNumber" class="labelEdit">Phone Number</label>
+                            <input type="tel" class="form-control shadow-none input" id="phoneNumber"
+                                placeholder="Enter your phone number">
+                        </div>
+                        <div class="form-group">
+                            <label for="city" class="labelEdit">Town/City</label>
+                            <input type="text" class="form-control shadow-none input" id="city"
+                                placeholder="Enter your town or city">
+                        </div>
+                        <div class="form-group">
+                            <label for="streetAddress" class="labelEdit">Address</label>
+                            <input type="text" class="form-control shadow-none input" id="streetAddress"
+                                placeholder="Enter your full address">
+                        </div>
+                        <div class="form-check save">
+                            <input type="checkbox" class="form-check-input pinkCheck" id="saveInfo">
+                            <label class="form-check-label " for="saveInfo">Save this information for faster check-out
+                                next
+                                time</label>
+                        </div>
+                    </form>
+            </div>
+            <div class="col-md-5 mb-3 checkout">
+                <div class="container mt-5 ">
+                    <div class="row ">
+                        <div class="col-md-12 ">
+                            <div class=" align-items-center d-flex justify-content-lg-between">
+                                <div class="d-flex align-items-center gap-3">
+                                    <img src="assets/images/checkout-images/Tv.png" class="product__img" alt="Image 1"
+                                        class="img-fluid ">
+                                    <p class="p-3 ">Hi Gamepad</p>
+                                </div>
+                                <p>$1100</p>
+                            </div>
+                            <div class="caption">
+                                <br />
+                                <h5>Cart Total</h5>
+                                <div class="d-flex justify-content-between">
+                                    <p>Subtotal:</p>
+                                    <p> $200</p>
+                                </div>
+                                <hr />
+                                <div class="d-flex justify-content-between">
+                                    <p>Shipping:</p>
+                                    <p>Free</p>
+                                </div>
+                                <hr />
+                                <div class="d-flex justify-content-between">
+                                    <p>Total:</p>
+                                    <p>$200</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="d-flex justify-content-between">
+                        <div class="check__items">
+                            <div class="form-check">
+                                <input class="form-check-input radio" type="radio" name="paymentOption" id="bankPayment"
+                                    value="bank">
+                                <label class="form-check-label" for="bankPayment">Bank</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input radio" type="radio" name="paymentOption"
+                                    id="cashOnDelivery" value="cash">
+                                <label class="form-check-label" for="cashOnDelivery">Cash on Delivery</label>
+                            </div>
+                        </div>
+                        <div class="payment__img">
+                            <img id="image" src="assets/images/checkout-images/bank.png" alt="bank method" />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="input-group d-flex justify-content-between mt-2">
+                        <input type="text" class="form-control coupon shadow-none input"
+                            placeholder="Enter Coupon Code">
+                        <div class="input-group-append">
+                            <button class="btn btn-apply" type="button">Apply Coupon</button>
+                        </div>
+                    </div>
+                    <button class="btn btn__order mt-2">Place Order</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
     <div data-include="footer.html"></div>
     <script src="./assets/JS/bootstrap.min.js"></script>
     <script src="./assets/JS/nav-footer.js"></script>
