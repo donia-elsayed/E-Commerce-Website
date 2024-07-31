@@ -1,1 +1,47 @@
 @import 'colors.css';
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .w__90 {
+    width: 80%;
+  }
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+.main__img {
+  width: 98%;
+  max-height: 550px;
+}
+}
+.product__description .star__icon {
+  color: var(--bg-color, #E2E8F0);
+}
+.product__description .star__icon.active {
+  color: #FFAD33;
+}
+.product__description .colours__selection span.active {
+  outline: 2px solid;
+  border: 2px solid #fff;
+}
+.circle {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+.circle.color1 {
+  background-color: #A0BCE0;
+}
+.circle.color2 {
+  background-color: #E07575;
+}
+.secondary__color__bg {
+  background-color: var(--secondary-color)!important;
+}
+.secondary__color__border {
+  border-color: var(--secondary-color)!important;
+}
