@@ -1,1 +1,50 @@
-@import 'colors.css';
+* {
+  font-family: Poppins;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+@import "colors.css";
+a {
+  text-decoration: none;
+  color: white;
+}
+.btn-apply , .btn-apply:hover {
+  color: var(--secondary-color);
+  background-color: white;
+  border: solid 1px var(--secondary-color);
+}
+
+
+
+.btn-toCheckout , .btn-toCheckout:hover  , .btn-toCheckout:focus  {
+  color: white;
+  background-color: var(--secondary-color);
+  border: solid 1px var(--secondary-color);
+}
+
+.coupon , .coupon:focus {
+  margin-right: 30px;
+  background-color: var(--bg-color);
+}
+
+.coupon::placeholder{
+  color: var(--secondary-color);
+}
+
+.product__img{
+  width: 20%;
+}
+
+.counter{
+  width:30px;
+  height: 30px;
+}
+
+ @media screen and (max-width: 990px) {
+     .adjust__response {
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Optional: Center items horizontally */
+  }
+}  

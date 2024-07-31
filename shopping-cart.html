@@ -6,17 +6,99 @@
     <title>Shopping Cart Page</title>
     <link rel="stylesheet" href="./assets/CSS/all.css">
     <link rel="stylesheet" href="./assets/CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/CSS/colors.css">
     <link rel="stylesheet" href="./assets/CSS/nav-footer.css">
     <link rel="stylesheet" href="./assets/CSS/shopping-cart.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div data-include="navbar.html"></div>
-    <main class="h-75"></main>
-    <div data-include="footer.html"></div>
-    <script src="./assets/JS/bootstrap.min.js"></script>
-    <script src="./assets/JS/nav-footer.js"></script>
-    <script src="./assets/JS/shopping-cart.js"></script>
+    <br/>
+    <div class="container mt-4">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Price</th>
+                    <th scope="col" class="col-md-2"git comm>Quantity</th>
+                    <th scope="col">Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="align-middle">
+                    <td><img src="assets/images/shopping-cart-images/TV.png" alt="LCD Monitor" class="product__img" /> LCD Monitor</td>
+                    <td>$650</td>
+                    <td class="adjust__response">
+                        <button type="button" class="btn border-secondary text-center">-</button>
+                        <span class="text-center m-2">0</span>
+                        <button type="button" class="btn border-secondary text-center ">+</button>
+                    </td>
+                    <td>$650</td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr class="align-middle">
+                    <td><img src="assets/images/shopping-cart-images/TV.png" alt="LCD Monitor" class="product__img" /> LCD Monitor</td>
+                    <td>$650</td>
+                    <td class="adjust__response">
+                        <button type="button" class="btn border-secondary text-center">-</button>
+                        <span class="text-center m-2">0</span>
+                        <button type="button" class="btn border-secondary text-center">+</button>
+                    </td>
+                    <td>$650</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <div class="container">
+            <div class="row">
+                <!-- Coupon code input -->
+                <div class="col-md-6 mb-3">
+                    <div class="input-group">
+                        <input type="text" class="form-control coupon shadow-none" placeholder="Enter Coupon Code">
+                        <div class="input-group-append ml-2">
+                            <button class="btn btn-apply" type="button">Apply Coupon</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cart totals -->
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Cart Total</h5>
+                            <div class="d-flex justify-content-between">
+                                <p class="card-text">Subtotal:</p>
+                                <p class="card-text">$200</p>
+                            </div>
+                            <hr />
+                            <div class="d-flex justify-content-between">
+                                <p class="card-text">Shipping:</p>
+                                <p class="card-text">Free</p>
+                            </div>
+                            <hr />
+                            <div class="d-flex justify-content-between">
+                                <p class="card-text">Total:</p>
+                                <p class="card-text">$200</p>
+                            </div>
+                            <button class="btn mt-3 btn-toCheckout"><a href="checkout.html">Proceed to Checkout</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <br/>
+        <div data-include="footer.html"></div>
+        <script src="./assets/JS/bootstrap.min.js"></script>
+        <script src="./assets/JS/shopping-cart.js"></script>
+        <script src="./assets/JS/bootstrap.min.js"></script>
+        <script src="./assets/JS/nav-footer.js"></script>
+        <script src="./assets/JS/shopping-cart.js"></script>
 </body>
 
 </html>

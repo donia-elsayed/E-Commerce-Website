@@ -1,32 +1,26 @@
+@import "colors.css";
 * {
   font-family: Poppins;
   font-size: 15px;
   line-height: 24px;
 }
-
-
-@import "colors.css";
-
 #image {
   padding-left: 30px;
 }
-
-
-.btn-apply, .btn-apply:hover , .btn-apply:focus {
+.btn-apply,
+.btn-apply:hover,
+.btn-apply:focus {
   color: var(--secondary-color);
   background-color: white;
   border: solid 1px var(--secondary-color);
 }
-
-
-
-.btn__order , .btn__order:hover , .btn__order:focus  {
+.btn__order,
+.btn__order:hover,
+.btn__order:focus {
   color: white;
   background-color: var(--secondary-color);
   border: solid 1px var(--secondary-color);
 }
- 
-
 
 .billing {
   padding-top: 50px;
@@ -35,7 +29,6 @@
 
 .checkout {
   margin-top: 50px;
-
 }
 
 .labelEdit {
@@ -52,7 +45,6 @@
   background-color: var(--secondary-color);
 }
 
-
 .input {
   background-color: var(--bg-color);
 }
@@ -62,7 +54,7 @@
   background-color: var(--bg-color);
 }
 
-.input::placeholder{
+.input::placeholder {
   color: var(--secondary-color);
 }
 
@@ -70,7 +62,6 @@
   margin-right: 30px;
 }
 
-.product__img{
+.product__img {
   width: 18%;
 }
-
