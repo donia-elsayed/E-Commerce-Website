@@ -1,0 +1,59 @@
+@import "colors.css";
+.home__left-side {
+  border: 1px solid var(--secondary-color);
+}
+.filter-sort___header {
+  color: var(--primary-color);
+}
+.input__search {
+  background-color: var(--bg-color);
+}
+.input__search::placeholder {
+  color: var(--secondary-color);
+}
+.search__icon {
+  position: relative;
+  left: -40px;
+  color: var(--secondary-color);
+}
+.btn__search,
+.btn__search:focus,
+.btn__search:active {
+  color: #fff;
+  background-color: var(--secondary-color);
+}
+.product__img__wrapper {
+  height: 200px;
+  position: relative;
+  background-color: #f5f5f5;
+  padding: 15px 0;
+}
+.product__img__wrapper div {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+.product__img__wrapper div i {
+  padding: 7px;
+  border-radius: 50%;
+  background-color: #fff;
+  color: var(--secondary-color);
+}
+.btn__search:hover,
+.btn__addToCart:hover {
+  background-color: #fff !important;
+  border-color: var(--secondary-color) !important;
+  color: var(--secondary-color) !important;
+}
+.btn__addToCart,
+.btn__addToCart:focus,
+.btn__addToCart:active {
+  background-color: var(--secondary-color) !important;
+  border-color: var(--secondary-color) !important;
+  color: #fff !important;
+}
+.product__price {
+  color: var(--primary-color);
+  font-weight: 500;
+  margin-right: 10px;
+}
