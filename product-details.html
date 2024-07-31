@@ -13,9 +13,9 @@
 
 <body>
     <div data-include="navbar.html"></div>
-    <main class="h-75 mt-4 mb-4">
-        <div class="container">
-            <section>
+    <main class="my-4">
+        <section>
+           <div class="container">
                 <div class="row">
                     <div class="col-3 col-lg-2 d-flex flex-column justify-content-between">
                         <img class="w__90 pb-lg-2" src="assets/images/product-details/Havic(small1).png" alt="Havic position1">
@@ -47,7 +47,7 @@
                             <span class="rounded-circle ms-2 circle color2"></span>
                         </div>
                         <div class="d-flex gap-2 align-items-center mb-4">
-                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                            <!-- <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                                 <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
                                 <label class="btn btn-outline-dark fw-semibold fs-5" for="btnradio1">&minus;</label>
                               
@@ -56,14 +56,19 @@
                               
                                 <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" checked>
                                 <label class="btn secondary__color__border secondary__color__bg fw-semibold fs-5" for="btnradio3">&plus;</label>
+                            </div> -->
+                            <div class="d-flex">
+                                <button class="border border-1 border-dark py-2 px-3 btn__count__color fs-5 btn__count rounded-start">&minus;</button>
+                                <span class="border-top border-bottom border-1 border-dark py-2 px-3 fw-semibold fs-5 btn__count">2</span>
+                                <button class="border border-start-0 py-2 px-3 fs-5 btn__count rounded-end">&plus;</button>
                             </div>
-                            <button class="btn secondary__color__bg btn-lg px-3 px-lg-5" type="button">Buy Now</button>
+                            <button class="btn btn__buy-now btn-lg px-3 px-lg-5 text-light" type="button">Buy Now</button>
                             <i class="fa-regular fa-heart fs-4 border border-1 border-dark p-2 rounded-3"></i>
                         </div>
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
     </main>
     <div data-include="footer.html"></div>
     <script src="./assets/JS/bootstrap.min.js"></script>

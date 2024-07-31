@@ -39,9 +39,15 @@
 .circle.color2 {
   background-color: #E07575;
 }
-.secondary__color__bg {
+.btn__buy-now {
   background-color: var(--secondary-color)!important;
 }
 .secondary__color__border {
   border-color: var(--secondary-color)!important;
+}
+.btn__count {
+  color: var(--secondary-color);
+}
+.btn__count__color{
+  background-color: #fff;
 }
