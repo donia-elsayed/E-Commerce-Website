@@ -5,19 +5,6 @@
   margin: 0;
   box-sizing: border-box;
 }
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-  .w__90 {
-    width: 80%;
-  }
-}
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-.main__img {
-  width: 98%;
-  max-height: 550px;
-}
-}
 .product__description .star__icon {
   color: var(--bg-color, #E2E8F0);
 }
