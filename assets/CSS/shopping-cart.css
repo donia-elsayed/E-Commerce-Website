@@ -41,10 +41,10 @@ a {
   height: 30px;
 }
 
-@media screen and (max-width: 990px) {
+ @media screen and (max-width: 990px) {
      .adjust__response {
       display: flex;
       flex-direction: column;
       align-items: center; /* Optional: Center items horizontally */
   }
-}
+}  
