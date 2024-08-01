@@ -24,7 +24,6 @@ const products = [];
 const displayProducts = async () => {
   const allProducts = await fatchAllProducts();
   products.push(...allProducts);
-  console.log(products);
   products.forEach((product) => {
     const { title, images, price, description, category } = product;
     createProduct(title, images, price, description, category);
