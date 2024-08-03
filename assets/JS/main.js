@@ -1,6 +1,6 @@
 const baseUrl = "https://dummyjson.com/products/category";
 const apiUrls = [
-  `${baseUrl}/smartphones`,
+  `${baseUrl}/smartphones?skip=4`,
   `${baseUrl}/mens-shirts`,
   `${baseUrl}/laptops`,
   `${baseUrl}/womens-dresses`,
@@ -20,17 +20,30 @@ const fatchAllProducts = async () => {
   return allProducts;
 };
 
-const products = [];
+export const products = [];
 const displayProducts = async () => {
   const allProducts = await fatchAllProducts();
   products.push(...allProducts);
   products.forEach((product) => {
-    const { title, images, price, description, category } = product;
-    createProduct(title, images, price, description, category);
+    createProduct(product);
+  });
+  displayCategories();
+};
+const displayCategories = () => {
+  const categories = [...new Set(products.map((product) => product.category))];
+  categories.forEach((category) => {
+    const categoriesWrapper = document.getElementById("categories-warapper");
+    categoriesWrapper.innerHTML += `
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="${category}" id="${category}">
+        <label class="form-check-label" for="${category}">
+            ${category}
+        </label>
+      </div>`;
   });
 };
-
-const createProduct = (title, images, price, description, category) => {
+const createProduct = (product) => {
+  const { title, images, price, description, category } = product;
   const card = document.getElementById("card");
   // Create the main container
   const productWrapper = document.createElement("div");
@@ -49,23 +62,9 @@ const createProduct = (title, images, price, description, category) => {
   // Create the icon wrapper
   const iconsWrapper = document.createElement("div");
   iconsWrapper.classList.add("d-flex", "flex-column");
-  // Create heart icon link
-  const heartIconLink = document.createElement("a");
-  heartIconLink.setAttribute("href", "#");
-  // Create heart icon
-  const heartIcon = document.createElement("i");
-  heartIcon.classList.add("fa-solid", "fa-heart", "mb-2");
-  // Append heart icon to heartIconLink
-  heartIconLink.appendChild(heartIcon);
-  // Create eye icon link
-  const eyeIconLink = document.createElement("a");
-  eyeIconLink.setAttribute("href", "#");
-  // Create eye icon
-  const eyeIcon = document.createElement("i");
-  eyeIcon.classList.add("fa-solid", "fa-eye");
-  eyeIconLink.appendChild(eyeIcon);
-  iconsWrapper.appendChild(heartIconLink);
-  iconsWrapper.appendChild(eyeIconLink);
+  iconsWrapper.innerHTML = `
+      <a href="#"><i class="fa-solid fa-heart mb-2"></i></a>
+      <a href="#"><i class="fa-solid fa-eye"></i></a>`;
   imgWrapper.appendChild(iconsWrapper);
 
   // Create "Add to Cart" button
