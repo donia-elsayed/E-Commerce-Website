@@ -1,6 +1,6 @@
 const baseUrl = "https://dummyjson.com/products/category";
 const apiUrls = [
-  `${baseUrl}/smartphones`,
+  `${baseUrl}/smartphones?skip=4`,
   `${baseUrl}/mens-shirts`,
   `${baseUrl}/laptops`,
   `${baseUrl}/womens-dresses`,
@@ -59,6 +59,7 @@ const createProduct = (title, images, price, description, category, index) => {
   heartIconLink.appendChild(heartIcon);
   // Create eye icon link
   const eyeIconLink = document.createElement("a");
+  eyeIconLink.setAttribute("href", "#");
   eyeIconLink.setAttribute("onClick", `navigateToDetails(${index})`);
   // Create eye icon
   const eyeIcon = document.createElement("i");
@@ -104,9 +105,9 @@ displayProducts();
 
 function navigateToDetails(index) {
   // Store the index and products array in sessionStorage
-  sessionStorage.setItem('selectedProductIndex', index);
-  sessionStorage.setItem('products', JSON.stringify(products));
-  
+  sessionStorage.setItem("selectedProductIndex", index);
+  sessionStorage.setItem("products", JSON.stringify(products));
+
   // Redirect to the product details page
-  window.location.href = 'product-details.html';
+  window.location.href = "product-details.html";
 }
