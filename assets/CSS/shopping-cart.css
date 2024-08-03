@@ -32,8 +32,12 @@ a {
   color: var(--secondary-color);
 }
 
-.product__img{
-  width: 20%;
+.product__img1{
+  width:15%;
+}
+
+.product__img2{
+  width:28%;
 }
 
 .counter{

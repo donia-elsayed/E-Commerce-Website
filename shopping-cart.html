@@ -17,8 +17,8 @@
 <body>
     <div data-include="navbar.html"></div>
     <br />
-    <div class="container mt-4">
-        <table class="table">
+    <div class="container mt-4" id="product__div">
+        <table class="table" id="product__table">
             <thead>
                 <tr>
                     <th scope="col">Product</th>
@@ -27,32 +27,10 @@
                     <th scope="col">Subtotal</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr class="align-middle">
-                    <td><img src="assets/images/shopping-cart/TV.png" alt="LCD Monitor" class="product__img" />
-                        LCD Monitor</td>
-                    <td>$650</td>
-                    <td class="adjust__response">
-                        <button type="button" class="btn border-secondary text-center">-</button>
-                        <span class="text-center m-2">0</span>
-                        <button type="button" class="btn border-secondary text-center ">+</button>
-                    </td>
-                    <td>$650</td>
-                </tr>
+            <tbody id="product__tbody">
+          
             </tbody>
-            <tbody>
-                <tr class="align-middle">
-                    <td><img src="assets/images/shopping-cart/TV.png" alt="LCD Monitor" class="product__img" /> LCD
-                        Monitor</td>
-                    <td>$650</td>
-                    <td class="adjust__response">
-                        <button type="button" class="btn border-secondary text-center">-</button>
-                        <span class="text-center m-2">0</span>
-                        <button type="button" class="btn border-secondary text-center">+</button>
-                    </td>
-                    <td>$650</td>
-                </tr>
-            </tbody>
+           
         </table>
 
 
@@ -98,10 +76,10 @@
     <br />
     <div data-include="footer.html"></div>
     <script src="./assets/JS/bootstrap.min.js"></script>
-    <script src="./assets/JS/shopping-cart.js"></script>
+    <script type="module" src="./assets/JS/shopping-cart.js"></script>
+    <!-- <script src="./assets/JS/main.js"></script> -->
     <script src="./assets/JS/bootstrap.min.js"></script>
     <script src="./assets/JS/nav-footer.js"></script>
-    <script src="./assets/JS/shopping-cart.js"></script>
 </body>
 
 </html>

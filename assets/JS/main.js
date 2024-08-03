@@ -8,6 +8,8 @@ const apiUrls = [
   `${baseUrl}/womens-bags`,
 ];
 
+
+
 const fatchAllProducts = async () => {
   const allResult = await Promise.all(
     apiUrls.map(async (url) => {
@@ -19,18 +21,26 @@ const fatchAllProducts = async () => {
   const allProducts = allResult.flatMap((result) => result.products || result);
   return allProducts;
 };
-
-const products = [];
-const displayProducts = async () => {
+ 
+// added a function to Store Data in local storage
+  const products = [];
+  const displayProducts = async () => {
   const allProducts = await fatchAllProducts();
   products.push(...allProducts);
+  const allProductsJSON = JSON.stringify(allProducts);
+  localStorage.setItem('allProducts', allProductsJSON);
   products.forEach((product) => {
-    const { title, images, price, description, category } = product;
-    createProduct(title, images, price, description, category);
+    createProduct(product);
   });
 };
 
-const createProduct = (title, images, price, description, category) => {
+// function of addToCart and saving it to local storage
+function addToCart(product) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  cart.push(product);
+  localStorage.setItem('cart', JSON.stringify(cart));}
+
+const createProduct = (product) => {
   const card = document.getElementById("card");
   // Create the main container
   const productWrapper = document.createElement("div");
@@ -40,8 +50,8 @@ const createProduct = (title, images, price, description, category) => {
   imgWrapper.classList.add("product__img__wrapper", "text-center", "rounded-3");
   // Create the image element
   const productImg = document.createElement("img");
-  productImg.setAttribute("src", images[0]);
-  const classes = category === "smartphones" ? ["w-40", "vh-35"] : ["w-75"];
+  productImg.setAttribute("src", product.images[0]);
+  const classes = product.category === "smartphones" ? ["w-40", "vh-35"] : ["w-75"];
   classes.forEach((cls) => productImg.classList.add(cls));
   imgWrapper.appendChild(productImg);
 
@@ -79,6 +89,7 @@ const createProduct = (title, images, price, description, category) => {
     "w-100",
     "mt-2"
   );
+  addToCartBtn.addEventListener("click", addToCart(product))
   addToCartBtn.innerText = "Add To Cart";
   productWrapper.appendChild(addToCartBtn);
 
@@ -86,9 +97,9 @@ const createProduct = (title, images, price, description, category) => {
   const productDetails = document.createElement("div");
   productDetails.classList.add("d-flex", "justify-content-lg-between", "my-3");
   const productTitle = document.createElement("h5");
-  productTitle.innerText = `${title}`;
+  productTitle.innerText = `${product.title}`;
   const productPrice = document.createElement("span");
-  productPrice.innerText = `${price}`;
+  productPrice.innerText = `${product.price}`;
   productPrice.classList.add("product__price");
   productDetails.appendChild(productTitle);
   productDetails.appendChild(productPrice);
@@ -96,8 +107,9 @@ const createProduct = (title, images, price, description, category) => {
 
   // Create product description
   const productDescription = document.createElement("p");
-  productDescription.innerText = `${description}`;
+  productDescription.innerText = `${product.description}`;
   productWrapper.appendChild(productDescription);
   card.appendChild(productWrapper);
 };
 displayProducts();
+
