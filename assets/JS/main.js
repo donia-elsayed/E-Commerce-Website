@@ -1,14 +1,12 @@
 const baseUrl = "https://dummyjson.com/products/category";
 const apiUrls = [
-  `${baseUrl}/smartphones`,
+  `${baseUrl}/smartphones?skip=4`,
   `${baseUrl}/mens-shirts`,
   `${baseUrl}/laptops`,
   `${baseUrl}/womens-dresses`,
   `${baseUrl}/mens-watches`,
   `${baseUrl}/womens-bags`,
 ];
-
-
 
 const fatchAllProducts = async () => {
   const allResult = await Promise.all(
@@ -21,24 +19,23 @@ const fatchAllProducts = async () => {
   const allProducts = allResult.flatMap((result) => result.products || result);
   return allProducts;
 };
- 
+
 // added a function to Store Data in local storage
-  const products = [];
-  const displayProducts = async () => {
+const products = [];
+const displayProducts = async () => {
   const allProducts = await fatchAllProducts();
   products.push(...allProducts);
-  const allProductsJSON = JSON.stringify(allProducts);
-  localStorage.setItem('allProducts', allProductsJSON);
   products.forEach((product) => {
     createProduct(product);
   });
 };
 
 // function of addToCart and saving it to local storage
-function addToCart(product) {
-  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+const addToCart = (product) => {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
   cart.push(product);
-  localStorage.setItem('cart', JSON.stringify(cart));}
+  localStorage.setItem("cart", JSON.stringify(cart));
+};
 
 const createProduct = (product) => {
   const card = document.getElementById("card");
@@ -51,7 +48,8 @@ const createProduct = (product) => {
   // Create the image element
   const productImg = document.createElement("img");
   productImg.setAttribute("src", product.images[0]);
-  const classes = product.category === "smartphones" ? ["w-40", "vh-35"] : ["w-75"];
+  const classes =
+    product.category === "smartphones" ? ["w-40", "vh-35"] : ["w-75"];
   classes.forEach((cls) => productImg.classList.add(cls));
   imgWrapper.appendChild(productImg);
 
@@ -89,8 +87,9 @@ const createProduct = (product) => {
     "w-100",
     "mt-2"
   );
-  addToCartBtn.addEventListener("click", addToCart(product))
   addToCartBtn.innerText = "Add To Cart";
+  addToCartBtn.setAttribute("data-id", product.id);
+  addToCartBtn.addEventListener("click", () => addToCart(product));
   productWrapper.appendChild(addToCartBtn);
 
   // Create product details
@@ -112,4 +111,3 @@ const createProduct = (product) => {
   card.appendChild(productWrapper);
 };
 displayProducts();
-
