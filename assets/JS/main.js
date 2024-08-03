@@ -24,13 +24,13 @@ const products = [];
 const displayProducts = async () => {
   const allProducts = await fatchAllProducts();
   products.push(...allProducts);
-  products.forEach((product) => {
+  products.forEach((product, index) => {
     const { title, images, price, description, category } = product;
-    createProduct(title, images, price, description, category);
+    createProduct(title, images, price, description, category, index);
   });
 };
 
-const createProduct = (title, images, price, description, category) => {
+const createProduct = (title, images, price, description, category, index) => {
   const card = document.getElementById("card");
   // Create the main container
   const productWrapper = document.createElement("div");
@@ -59,7 +59,7 @@ const createProduct = (title, images, price, description, category) => {
   heartIconLink.appendChild(heartIcon);
   // Create eye icon link
   const eyeIconLink = document.createElement("a");
-  eyeIconLink.setAttribute("href", "#");
+  eyeIconLink.setAttribute("onClick", `navigateToDetails(${index})`);
   // Create eye icon
   const eyeIcon = document.createElement("i");
   eyeIcon.classList.add("fa-solid", "fa-eye");
@@ -101,3 +101,11 @@ const createProduct = (title, images, price, description, category) => {
   card.appendChild(productWrapper);
 };
 displayProducts();
+
+function navigateToDetails(index) {
+  // Store the products array in localStorage
+  localStorage.setItem('products', JSON.stringify(products));
+  
+  // Change the URL to include the index as a query parameter under the name "id"
+  window.location.href = `product-details.html?id=${index}`;
+}
