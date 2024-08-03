@@ -29,19 +29,7 @@ const displayProducts = async () => {
   });
   displayCategories();
 };
-const displayCategories = () => {
-  const categories = [...new Set(products.map((product) => product.category))];
-  categories.forEach((category) => {
-    const categoriesWrapper = document.getElementById("categories-warapper");
-    categoriesWrapper.innerHTML += `
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="${category}" id="${category}">
-        <label class="form-check-label" for="${category}">
-            ${category}
-        </label>
-      </div>`;
-  });
-};
+
 const createProduct = (product) => {
   const { title, images, price, description, category } = product;
   const card = document.getElementById("card");
@@ -100,3 +88,142 @@ const createProduct = (product) => {
   card.appendChild(productWrapper);
 };
 displayProducts();
+
+
+
+// Search, Filter And Sort Function
+
+// Create a function to search products
+const searchProducts = (searchTerm) => {
+  const productsWrapper = document.getElementById("card");
+  productsWrapper.innerHTML = "";
+
+  const filteredProducts = products.filter((product) => {
+    return product.title.toLowerCase().includes(searchTerm.toLowerCase());
+  });
+
+  filteredProducts.forEach((product) => {
+    createProduct(product);
+  });
+};
+
+// Get the search input field
+const searchInput = document.getElementById("search-input");
+const searchButton = document.getElementById("search-button");
+
+// Attach an event listener to the search input field
+searchInput.addEventListener("input", (e) => {
+  const searchTerm = e.target.value.trim();
+  searchProducts(searchTerm);
+});
+
+// Attach an event listener to the search button
+searchButton.addEventListener("click", (e) => {
+  e.preventDefault(); // Add this line to prevent the default behavior
+  const searchTerm = searchInput.value.trim();
+  const productsWrapper = document.getElementById("card");
+  productsWrapper.innerHTML = ""; // Clear the products wrapper
+
+  if (searchTerm === "") {
+    // Don't show any products if the input field is empty
+  } else {
+    searchProducts(searchTerm); // Show filtered products if the input field is not empty
+  }
+});
+
+
+
+// Filter Products By Categories by js
+
+const displayCategories = () => {
+  const categories = [...new Set(products.map((product) => product.category))];
+  const categoriesWrapper = document.getElementById("categories-warapper");
+  categories.forEach((category) => {
+    const checkboxWrapper = document.createElement("div");
+    checkboxWrapper.className = "form-check";
+    const checkbox = document.createElement("input");
+    checkbox.className = "form-check-input filter";
+    checkbox.type = "checkbox";
+    checkbox.value = category;
+    checkbox.id = category;
+
+    const label = document.createElement("label");
+    label.className = "form-check-label";
+    label.htmlFor = category;
+    label.textContent = category;
+
+    checkboxWrapper.appendChild(checkbox);
+    checkboxWrapper.appendChild(label);
+
+    categoriesWrapper.appendChild(checkboxWrapper);
+
+
+    // Attach an event listener to the checkbox
+    checkbox.addEventListener('click', () => {
+      const checkedCategories = [];
+      const productsWrapper = document.getElementById("card");
+      productsWrapper.innerHTML = "";
+
+      // Get all the checked categories
+      const categoryCheckboxes = document.querySelectorAll('.filter');
+      categoryCheckboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+          checkedCategories.push(checkbox.value);
+        }
+      });
+
+      // Filter the products based on the checked categories
+      const filteredProducts = products.filter(product => {
+        return checkedCategories.includes(product.category);
+      });
+
+      // If no categories are checked, show all products
+      if (checkedCategories.length === 0) {
+        products.forEach(product => {
+          createProduct(product);
+        });
+      } else {
+        filteredProducts.forEach(product => {
+          createProduct(product);
+        });
+      }
+    });
+  });
+};
+
+
+
+// Sort Products By Price 
+
+// Get the price checkboxes
+const priceCheckboxes = document.querySelectorAll('#allPrices input[type="checkbox"]');
+
+// Add an event listener to the price checkboxes
+priceCheckboxes.forEach(checkbox => {
+  checkbox.addEventListener('click', () => {
+    const checkedPrices = [];
+    const productsWrapper = document.getElementById("card");
+    productsWrapper.innerHTML = "";
+
+    // Get the checked prices
+    priceCheckboxes.forEach(checkbox => {
+      if (checkbox.checked) {
+        checkedPrices.push(checkbox.id);
+      }
+    });
+
+    // Sort the products based on the checked prices
+    let sortedProducts = products;
+    if (checkedPrices.includes('asc')) {
+      sortedProducts = products.sort((a, b) => a.price - b.price);
+    } else if (checkedPrices.includes('des')) {
+      sortedProducts = products.sort((a, b) => b.price - a.price);
+    }
+
+    // Create the products
+    sortedProducts.forEach(product => {
+      createProduct(product);
+    });
+  });
+});
+
