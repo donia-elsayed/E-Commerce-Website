@@ -72,9 +72,23 @@ const createProduct = (product) => {
   // Create the icon wrapper
   const iconsWrapper = document.createElement("div");
   iconsWrapper.classList.add("d-flex", "flex-column");
-  iconsWrapper.innerHTML = `
-      <a href="#"><i class="fa-solid fa-heart mb-2"></i></a>
-      <a href="#"><i class="fa-solid fa-eye"></i></a>`;
+  // Create heart icon link
+  const heartIconLink = document.createElement("a");
+  heartIconLink.setAttribute("href", "#");
+  // Create heart icon
+  const heartIcon = document.createElement("i");
+  heartIcon.classList.add("fa-solid", "fa-heart", "mb-2");
+  // Append heart icon to heartIconLink
+  heartIconLink.appendChild(heartIcon);
+  // Create eye icon link
+  const eyeIconLink = document.createElement("a");
+  eyeIconLink.setAttribute("href", "#");
+  // Create eye icon
+  const eyeIcon = document.createElement("i");
+  eyeIcon.classList.add("fa-solid", "fa-eye");
+  eyeIconLink.appendChild(eyeIcon);
+  iconsWrapper.appendChild(heartIconLink);
+  iconsWrapper.appendChild(eyeIconLink);
   imgWrapper.appendChild(iconsWrapper);
 
   // Create "Add to Cart" button
