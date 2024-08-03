@@ -31,15 +31,25 @@ const displayProducts = async () => {
 };
 const displayCategories = () => {
   const categories = [...new Set(products.map((product) => product.category))];
+  const categoriesWrapper = document.getElementById("categories-warapper");
   categories.forEach((category) => {
-    const categoriesWrapper = document.getElementById("categories-warapper");
-    categoriesWrapper.innerHTML += `
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="${category}" id="${category}">
-        <label class="form-check-label" for="${category}">
-            ${category}
-        </label>
-      </div>`;
+    const checkboxWrapper = document.createElement("div");
+    checkboxWrapper.classList.add("form-check");
+    const checkbox = document.createElement("input");
+    checkbox.classList.add("form-check-input", "filter");
+    checkbox.type = "checkbox";
+    checkbox.value = `${category}`;
+    checkbox.id = `${category}`;
+
+    const label = document.createElement("label");
+    label.classList.add("form-check-label");
+    label.htmlFor = `${category}`;
+    label.textContent = `${category}`;
+
+    checkboxWrapper.appendChild(checkbox);
+    checkboxWrapper.appendChild(label);
+
+    categoriesWrapper.appendChild(checkboxWrapper);
   });
 };
 const createProduct = (product) => {
