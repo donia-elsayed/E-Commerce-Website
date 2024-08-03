@@ -1,13 +1,9 @@
-// Get the URL query parameters
-const urlParams = new URLSearchParams(window.location.search);
-const index = urlParams.get('id'); // Retrieve the index from "id"
-
-// Retrieve the products array from localStorage
-const products = JSON.parse(localStorage.getItem('products'));
+// Retrieve the index and products array from sessionStorage
+const index = parseInt(sessionStorage.getItem('selectedProductIndex'));
+const products = JSON.parse(sessionStorage.getItem('products'));
 
 // Use the index to find the corresponding product
 const product = products[index];
-
 
 let productTitle = document.getElementById("product-title");
 let productPrice = document.getElementById("product-price");

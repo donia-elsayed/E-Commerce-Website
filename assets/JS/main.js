@@ -103,9 +103,10 @@ const createProduct = (title, images, price, description, category, index) => {
 displayProducts();
 
 function navigateToDetails(index) {
-  // Store the products array in localStorage
-  localStorage.setItem('products', JSON.stringify(products));
+  // Store the index and products array in sessionStorage
+  sessionStorage.setItem('selectedProductIndex', index);
+  sessionStorage.setItem('products', JSON.stringify(products));
   
-  // Change the URL to include the index as a query parameter under the name "id"
-  window.location.href = `product-details.html?id=${index}`;
+  // Redirect to the product details page
+  window.location.href = 'product-details.html';
 }
