@@ -8,6 +8,7 @@ const apiUrls = [
   `${baseUrl}/womens-bags`,
 ];
 
+export const products = [];
 const fatchAllProducts = async () => {
   const allResult = await Promise.all(
     apiUrls.map(async (url) => {
@@ -20,17 +21,17 @@ const fatchAllProducts = async () => {
   return allProducts;
 };
 
-const products = [];
 const displayProducts = async () => {
   const allProducts = await fatchAllProducts();
   products.push(...allProducts);
+  document.dispatchEvent(new Event("productsLoaded"));
   products.forEach((product, index) => {
-    const { title, images, price, description, category } = product;
-    createProduct(title, images, price, description, category, index);
+    createProduct(product, index);
   });
 };
 
-const createProduct = (title, images, price, description, category, index) => {
+const createProduct = (product, index) => {
+  const { title, images, price, description, category } = product;
   const card = document.getElementById("card");
   // Create the main container
   const productWrapper = document.createElement("div");
@@ -59,8 +60,8 @@ const createProduct = (title, images, price, description, category, index) => {
   heartIconLink.appendChild(heartIcon);
   // Create eye icon link
   const eyeIconLink = document.createElement("a");
-  // eyeIconLink.setAttribute("onClick", `navigateToDetails(${index})`);
-  eyeIconLink.addEventListener('click', () => navigateToDetails(index));
+  eyeIconLink.setAttribute("href", "#");
+  eyeIconLink.addEventListener("click", () => navigateToDetails(index));
   // Create eye icon
   const eyeIcon = document.createElement("i");
   eyeIcon.classList.add("fa-solid", "fa-eye");
@@ -99,16 +100,10 @@ const createProduct = (title, images, price, description, category, index) => {
   const productDescription = document.createElement("p");
   productDescription.innerText = `${description}`;
   productWrapper.appendChild(productDescription);
-  if (window.location.href.includes('index.html')){
-    card.appendChild(productWrapper);
-  }
+  card.appendChild(productWrapper);
 };
-displayProducts();
 
-function navigateToDetails(index) {
-  // Change the URL to include the index as a query parameter under the name "id"
+const navigateToDetails = (index) => {
   window.location.href = `product-details.html?id=${index}`;
-}
-
-export default products;
-
+};
+document.addEventListener("DOMContentLoaded", displayProducts);
