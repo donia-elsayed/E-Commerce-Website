@@ -111,15 +111,10 @@ const searchProducts = (searchTerm) => {
 const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
 
-// Attach an event listener to the search input field
-searchInput.addEventListener("input", (e) => {
-  const searchTerm = e.target.value.trim();
-  searchProducts(searchTerm);
-});
 
-// Attach an event listener to the search button
-searchButton.addEventListener("click", (e) => {
-  e.preventDefault(); // Add this line to prevent the default behavior
+// Function to handle search input and button click
+function handleSearchEvent(e) {
+  e.preventDefault(); // Add this line to prevent the default behavior for button click
   const searchTerm = searchInput.value.trim();
   const productsWrapper = document.getElementById("card");
   productsWrapper.innerHTML = ""; // Clear the products wrapper
@@ -129,7 +124,32 @@ searchButton.addEventListener("click", (e) => {
   } else {
     searchProducts(searchTerm); // Show filtered products if the input field is not empty
   }
-});
+}
+
+// Attach event listeners to the search input field and search button
+searchInput.addEventListener("input", handleSearchEvent);
+searchButton.addEventListener("click", handleSearchEvent);
+
+
+// // Attach an event listener to the search input field
+// searchInput.addEventListener("input", (e) => {
+//   const searchTerm = e.target.value.trim();
+//   searchProducts(searchTerm);
+// });
+
+// // Attach an event listener to the search button
+// searchButton.addEventListener("click", (e) => {
+//   e.preventDefault(); // Add this line to prevent the default behavior
+//   const searchTerm = searchInput.value.trim();
+//   const productsWrapper = document.getElementById("card");
+//   productsWrapper.innerHTML = ""; // Clear the products wrapper
+
+//   if (searchTerm === "") {
+//     // Don't show any products if the input field is empty
+//   } else {
+//     searchProducts(searchTerm); // Show filtered products if the input field is not empty
+//   }
+// });
 
 
 
