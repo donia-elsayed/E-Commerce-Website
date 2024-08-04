@@ -59,8 +59,8 @@ const createProduct = (title, images, price, description, category, index) => {
   heartIconLink.appendChild(heartIcon);
   // Create eye icon link
   const eyeIconLink = document.createElement("a");
-  eyeIconLink.setAttribute("href", "#");
-  eyeIconLink.setAttribute("onClick", `navigateToDetails(${index})`);
+  // eyeIconLink.setAttribute("onClick", `navigateToDetails(${index})`);
+  eyeIconLink.addEventListener('click', () => navigateToDetails(index));
   // Create eye icon
   const eyeIcon = document.createElement("i");
   eyeIcon.classList.add("fa-solid", "fa-eye");
@@ -99,15 +99,16 @@ const createProduct = (title, images, price, description, category, index) => {
   const productDescription = document.createElement("p");
   productDescription.innerText = `${description}`;
   productWrapper.appendChild(productDescription);
-  card.appendChild(productWrapper);
+  if (window.location.href.includes('index.html')){
+    card.appendChild(productWrapper);
+  }
 };
 displayProducts();
 
 function navigateToDetails(index) {
-  // Store the index and products array in sessionStorage
-  sessionStorage.setItem("selectedProductIndex", index);
-  sessionStorage.setItem("products", JSON.stringify(products));
-
-  // Redirect to the product details page
-  window.location.href = "product-details.html";
+  // Change the URL to include the index as a query parameter under the name "id"
+  window.location.href = `product-details.html?id=${index}`;
 }
+
+export default products;
+
