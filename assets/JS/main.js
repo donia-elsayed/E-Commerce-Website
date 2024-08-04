@@ -89,8 +89,6 @@ const createProduct = (product) => {
 };
 displayProducts();
 
-
-
 // Search, Filter And Sort Function
 
 // Create a function to search products
@@ -111,25 +109,20 @@ const searchProducts = (searchTerm) => {
 const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
 
-
 // Function to handle search input and button click
-function handleSearchEvent(e) {
-  e.preventDefault(); // Add this line to prevent the default behavior for button click
+const handleSearchEvent = (e) => {
+  e.preventDefault();
   const searchTerm = searchInput.value.trim();
   const productsWrapper = document.getElementById("card");
-  productsWrapper.innerHTML = ""; // Clear the products wrapper
+  productsWrapper.innerHTML = "";
 
-  if (searchTerm === "") {
-    // Don't show any products if the input field is empty
-  } else {
-    searchProducts(searchTerm); // Show filtered products if the input field is not empty
+  if (searchTerm !== "") {
+    searchProducts(searchTerm);
   }
-}
+};
 
-// Attach event listeners to the search input field and search button
-searchInput.addEventListener("input", handleSearchEvent);
+// Attach event listeners to the search button
 searchButton.addEventListener("click", handleSearchEvent);
-
 
 // Filter Products By Categories by js
 
@@ -155,33 +148,32 @@ const displayCategories = () => {
 
     categoriesWrapper.appendChild(checkboxWrapper);
 
-
     // Attach an event listener to the checkbox
-    checkbox.addEventListener('click', () => {
+    checkbox.addEventListener("click", () => {
       const checkedCategories = [];
       const productsWrapper = document.getElementById("card");
       productsWrapper.innerHTML = "";
 
       // Get all the checked categories
-      const categoryCheckboxes = document.querySelectorAll('.filter');
-      categoryCheckboxes.forEach(checkbox => {
+      const categoryCheckboxes = document.querySelectorAll(".filter");
+      categoryCheckboxes.forEach((checkbox) => {
         if (checkbox.checked) {
           checkedCategories.push(checkbox.value);
         }
       });
 
       // Filter the products based on the checked categories
-      const filteredProducts = products.filter(product => {
+      const filteredProducts = products.filter((product) => {
         return checkedCategories.includes(product.category);
       });
 
       // If no categories are checked, show all products
       if (checkedCategories.length === 0) {
-        products.forEach(product => {
+        products.forEach((product) => {
           createProduct(product);
         });
       } else {
-        filteredProducts.forEach(product => {
+        filteredProducts.forEach((product) => {
           createProduct(product);
         });
       }
@@ -189,22 +181,22 @@ const displayCategories = () => {
   });
 };
 
-
-
-// Sort Products By Price 
+// Sort Products By Price
 
 // Get the price checkboxes
-const priceCheckboxes = document.querySelectorAll('#allPrices input[type="checkbox"]');
+const priceCheckboxes = document.querySelectorAll(
+  '#allPrices input[type="checkbox"]'
+);
 
 // Add an event listener to the price checkboxes
-priceCheckboxes.forEach(checkbox => {
-  checkbox.addEventListener('click', () => {
+priceCheckboxes.forEach((checkbox) => {
+  checkbox.addEventListener("click", () => {
     const checkedPrices = [];
     const productsWrapper = document.getElementById("card");
     productsWrapper.innerHTML = "";
 
     // Get the checked prices
-    priceCheckboxes.forEach(checkbox => {
+    priceCheckboxes.forEach((checkbox) => {
       if (checkbox.checked) {
         checkedPrices.push(checkbox.id);
       }
@@ -212,16 +204,15 @@ priceCheckboxes.forEach(checkbox => {
 
     // Sort the products based on the checked prices
     let sortedProducts = products;
-    if (checkedPrices.includes('asc')) {
+    if (checkedPrices.includes("asc")) {
       sortedProducts = products.sort((a, b) => a.price - b.price);
-    } else if (checkedPrices.includes('des')) {
+    } else if (checkedPrices.includes("des")) {
       sortedProducts = products.sort((a, b) => b.price - a.price);
     }
 
     // Create the products
-    sortedProducts.forEach(product => {
+    sortedProducts.forEach((product) => {
       createProduct(product);
     });
   });
 });
-
