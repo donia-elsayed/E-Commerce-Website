@@ -12,7 +12,7 @@ const displayProduct = (product) => {
   // Create and append image elements for each image
   product.images.forEach((image, index) => {
     const img = document.createElement("img");
-    img.className = `${imageClass} mb-2`;
+    img.className = `${imageClass} mb-2 img__size`;
     img.src = image;
     img.alt = `Product position ${index + 1}`;
     // Add click event for changing main image
@@ -22,10 +22,10 @@ const displayProduct = (product) => {
 
   // Create container for the main image
   const mainImageContainer = document.createElement("div");
-  mainImageContainer.className = "offset-lg-1 col-lg-4 col-md-6 col my-auto";
+  mainImageContainer.className = "offset-lg-1 col-lg-4 col-md-6 col my-auto img__container";
 
   const mainImage = document.createElement("img");
-  mainImage.className = "w-40";
+  mainImage.className = "main__img";
   mainImage.src = product.images[0];
   mainImage.id = "main-image";
   mainImage.alt = "Havic main image";
