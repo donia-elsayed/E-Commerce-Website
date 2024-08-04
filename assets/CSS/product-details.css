@@ -39,32 +39,3 @@
 .w-40 {
   width: 40%;
 }
-.img__container2 {
-  width: 100px;
-  height: 350px;
-  position: relative;
-}
-.img__size {
-  position: relative;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 30%;
-}
-.img__container {
-  width: 300px;
-  height: 500px;
-  background-color: #ccc;
-  position: relative;
-}
-.main__img {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-}

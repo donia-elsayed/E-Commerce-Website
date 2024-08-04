@@ -6,13 +6,13 @@ const displayProduct = (product) => {
   // Create container for secondary images
   const secondaryImagesContainer = document.createElement("div");
   secondaryImagesContainer.className =
-  "col-lg-2 col-3 d-flex flex-column align-items-center img__container2";
+    "col-lg-2 col-3 d-flex flex-column align-items-center";
   secondaryImagesContainer.id = "secondary-images";
 
   // Create and append image elements for each image
   product.images.forEach((image, index) => {
     const img = document.createElement("img");
-    img.className = `${imageClass} mb-2 img__size`;
+    img.className = `${imageClass} mb-2`;
     img.src = image;
     img.alt = `Product position ${index + 1}`;
     // Add click event for changing main image
@@ -22,10 +22,10 @@ const displayProduct = (product) => {
 
   // Create container for the main image
   const mainImageContainer = document.createElement("div");
-  mainImageContainer.className = "offset-lg-1 col-lg-4 col-md-6 col my-auto img__container";
+  mainImageContainer.className = "offset-lg-1 col-lg-4 col-md-6 col my-auto";
 
   const mainImage = document.createElement("img");
-  mainImage.className = "main__img";
+  mainImage.className = "w-40";
   mainImage.src = product.images[0];
   mainImage.id = "main-image";
   mainImage.alt = "Havic main image";
