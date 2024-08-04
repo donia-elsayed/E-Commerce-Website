@@ -1,4 +1,4 @@
-@import 'colors.css';
+@import "colors.css";
 
 * {
   padding: 0;
@@ -6,10 +6,10 @@
   box-sizing: border-box;
 }
 .product__description .star__icon {
-  color: var(--bg-color, #E2E8F0);
+  color: var(--bg-color, #e2e8f0);
 }
 .product__description .star__icon.active {
-  color: #FFAD33;
+  color: #ffad33;
 }
 .product__description .colours__selection span.active {
   outline: 2px solid;
@@ -21,19 +21,21 @@
   height: 20px;
 }
 .circle.color1 {
-  background-color: #A0BCE0;
+  background-color: #a0bce0;
 }
 .circle.color2 {
-  background-color: #E07575;
+  background-color: #e07575;
 }
 .btn__buy-now {
-  background-color: var(--secondary-color)!important;
+  background-color: var(--secondary-color) !important;
 }
 .secondary__color__border {
-  border-color: var(--secondary-color)!important;
+  border-color: var(--secondary-color) !important;
 }
 .btn__count {
   color: var(--secondary-color);
-  background-color: #F0F0F0;
+  background-color: #f0f0f0;
 }
-
+.w-40 {
+  width: 40%;
+}

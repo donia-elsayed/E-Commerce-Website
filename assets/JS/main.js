@@ -8,6 +8,7 @@ const apiUrls = [
   `${baseUrl}/womens-bags`,
 ];
 
+export const products = [];
 const fatchAllProducts = async () => {
   const allResult = await Promise.all(
     apiUrls.map(async (url) => {
@@ -20,12 +21,12 @@ const fatchAllProducts = async () => {
   return allProducts;
 };
 
-export const products = [];
 const displayProducts = async () => {
   const allProducts = await fatchAllProducts();
   products.push(...allProducts);
-  products.forEach((product) => {
-    createProduct(product);
+  document.dispatchEvent(new Event("productsLoaded"));
+  products.forEach((product, index) => {
+    createProduct(product, index);
   });
   displayCategories();
 };
@@ -45,7 +46,7 @@ const addToCart = (product) => {
   localStorage.setItem("cart", JSON.stringify(cart));
 };
 
-const createProduct = (product) => {
+const createProduct = (product, index) => {
   const { title, images, price, description, category } = product;
   const card = document.getElementById("card");
   // Create the main container
@@ -76,6 +77,7 @@ const createProduct = (product) => {
   // Create eye icon link
   const eyeIconLink = document.createElement("a");
   eyeIconLink.setAttribute("href", "#");
+  eyeIconLink.addEventListener("click", () => navigateToDetails(index));
   // Create eye icon
   const eyeIcon = document.createElement("i");
   eyeIcon.classList.add("fa-solid", "fa-eye");
@@ -116,10 +118,10 @@ const createProduct = (product) => {
   const productDescription = document.createElement("p");
   productDescription.innerText = `${description}`;
   productWrapper.appendChild(productDescription);
-  card.appendChild(productWrapper);
+  if (window.location.href.includes("index.html")) {
+    card.appendChild(productWrapper);
+  }
 };
-
-// Search, Filter And Sort Function
 
 // Create a function to search products
 const searchProducts = (searchTerm) => {
@@ -157,7 +159,9 @@ function handleSearchEvent(e) {
 }
 
 // Attach event listeners to the search button
-searchInput.addEventListener("input", handleSearchEvent);
+if (searchInput) {
+  searchInput.addEventListener("input", handleSearchEvent);
+}
 
 // Filter Products By Categories by js
 
@@ -180,9 +184,9 @@ const displayCategories = () => {
 
     checkboxWrapper.appendChild(checkbox);
     checkboxWrapper.appendChild(label);
-
-    categoriesWrapper.appendChild(checkboxWrapper);
-
+    if (window.location.href.includes("index.html")) {
+      categoriesWrapper.appendChild(checkboxWrapper);
+    }
     // Attach an event listener to the checkbox
     checkbox.addEventListener("click", () => {
       const checkedCategories = [];
@@ -250,5 +254,7 @@ priceCheckboxes.forEach((checkbox) => {
     });
   });
 });
-
-displayProducts();
+const navigateToDetails = (index) => {
+  window.location.href = `product-details.html?id=${index}`;
+};
+document.addEventListener("DOMContentLoaded", displayProducts);
