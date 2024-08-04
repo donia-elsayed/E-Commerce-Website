@@ -33,7 +33,16 @@ const displayProducts = async () => {
 // function of addToCart and saving it to local storage
 const addToCart = (product) => {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cart.push(product);
+  const existingProductIndex = cart.findIndex(item => item.id === product.id);
+
+  if (existingProductIndex > -1) {
+    cart[existingProductIndex].quantity += 1;
+    
+  } else {
+    product.quantity = 1;
+    cart.push(product);
+  }
+
   localStorage.setItem("cart", JSON.stringify(cart));
 };
 
