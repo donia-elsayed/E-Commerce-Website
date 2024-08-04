@@ -38,7 +38,7 @@ const createProduct = (product) => {
 
   const quantitySpan = document.createElement("span");
   quantitySpan.classList.add("text-center", "m-2");
-  quantitySpan.textContent = "0";
+  quantitySpan.textContent = "1";
 
   const plusButton = document.createElement("button");
   plusButton.type = "button";
@@ -67,5 +67,46 @@ const createProduct = (product) => {
 
   const tableElement = document.getElementById("product__table");
   tableElement.appendChild(tbodyElement);
+  
+  let quantity = 1;
+  
+  // Event listener for the plus button
+  plusButton.addEventListener('click', () => {
+    quantity++;
+    quantitySpan.textContent = quantity;
+    tdSubtotal.textContent = `${price * quantity}$`;
+  });
+
+  // Event listener for the minus button
+  minusButton.addEventListener('click', () => {
+    if (quantity > 0) {
+      quantity--;
+      quantitySpan.textContent = quantity;
+      tdSubtotal.textContent = `${price * quantity}$`;
+    }
+  });
+
+  
+  removeIcon.addEventListener('click', () => {
+      removeFromCart(product);
+      tr.remove();
+  });
 };
+
+
+const updateCart = (product, newQuantity) => {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart = cart.map(item => 
+    item.title === product.title ? { ...item, quantity: newQuantity } : item
+  );
+  localStorage.setItem("cart", JSON.stringify(cart));
+};
+
+const removeFromCart = (product) => {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart = cart.filter(item => item.title !== product.title);
+  localStorage.setItem("cart", JSON.stringify(cart));
+};
+
 document.addEventListener("DOMContentLoaded", displayCart);
+
