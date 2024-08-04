@@ -29,6 +29,22 @@ const displayProducts = async () => {
   });
   displayCategories();
 };
+
+// function of addToCart and saving it to local storage
+const addToCart = (product) => {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const existingProductIndex = cart.findIndex((item) => item.id === product.id);
+
+  if (existingProductIndex > -1) {
+    cart[existingProductIndex].quantity += 1;
+  } else {
+    product.quantity = 1;
+    cart.push(product);
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+};
+
 const createProduct = (product) => {
   const { title, images, price, description, category } = product;
   const card = document.getElementById("card");
@@ -80,6 +96,8 @@ const createProduct = (product) => {
     "mt-2"
   );
   addToCartBtn.innerText = "Add To Cart";
+  addToCartBtn.setAttribute("data-id", product.id);
+  addToCartBtn.addEventListener("click", () => addToCart(product));
   productWrapper.appendChild(addToCartBtn);
 
   // Create product details
@@ -119,20 +137,24 @@ const searchProducts = (searchTerm) => {
 
 // Get the search input field
 const searchInput = document.getElementById("search-input");
+const searchButton = document.getElementById("search-button");
 
 // Function to handle search input and button click
-const handleSearchEvent = (e) => {
+function handleSearchEvent(e) {
   e.preventDefault();
   const searchTerm = searchInput.value.trim();
   const productsWrapper = document.getElementById("card");
   productsWrapper.innerHTML = "";
 
-  if (searchTerm === "") {
-    displayProducts();
+  if (searchTerm === "" && e.type === "click") {
+    // Show all products if the input field is empty and the button is clicked
+    products.forEach((product) => {
+      createProduct(product);
+    });
   } else {
-    searchProducts(searchTerm);
+    searchProducts(searchTerm); // Show filtered products if the input field is not empty
   }
-};
+}
 
 // Attach event listeners to the search button
 searchInput.addEventListener("input", handleSearchEvent);
