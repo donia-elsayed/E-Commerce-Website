@@ -33,41 +33,16 @@ const displayProducts = async () => {
 // function of addToCart and saving it to local storage
 const addToCart = (product) => {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const existingProductIndex = cart.findIndex(item => item.id === product.id);
+  const existingProductIndex = cart.findIndex((item) => item.id === product.id);
 
   if (existingProductIndex > -1) {
     cart[existingProductIndex].quantity += 1;
-    
   } else {
     product.quantity = 1;
     cart.push(product);
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
-};
-
-const displayCategories = () => {
-  const categories = [...new Set(products.map((product) => product.category))];
-  const categoriesWrapper = document.getElementById("categories-warapper");
-  categories.forEach((category) => {
-    const checkboxWrapper = document.createElement("div");
-    checkboxWrapper.classList.add("form-check");
-    const checkbox = document.createElement("input");
-    checkbox.classList.add("form-check-input", "filter");
-    checkbox.type = "checkbox";
-    checkbox.value = `${category}`;
-    checkbox.id = `${category}`;
-
-    const label = document.createElement("label");
-    label.classList.add("form-check-label");
-    label.htmlFor = `${category}`;
-    label.textContent = `${category}`;
-
-    checkboxWrapper.appendChild(checkbox);
-    checkboxWrapper.appendChild(label);
-
-    categoriesWrapper.appendChild(checkboxWrapper);
-  });
 };
 
 const createProduct = (product) => {
@@ -143,4 +118,137 @@ const createProduct = (product) => {
   productWrapper.appendChild(productDescription);
   card.appendChild(productWrapper);
 };
+
+// Search, Filter And Sort Function
+
+// Create a function to search products
+const searchProducts = (searchTerm) => {
+  const productsWrapper = document.getElementById("card");
+  productsWrapper.innerHTML = "";
+
+  const filteredProducts = products.filter((product) => {
+    return product.title.toLowerCase().includes(searchTerm.toLowerCase());
+  });
+
+  filteredProducts.forEach((product) => {
+    createProduct(product);
+  });
+};
+
+// Get the search input field
+const searchInput = document.getElementById("search-input");
+const searchButton = document.getElementById("search-button");
+
+// Function to handle search input and button click
+function handleSearchEvent(e) {
+  e.preventDefault();
+  const searchTerm = searchInput.value.trim();
+  const productsWrapper = document.getElementById("card");
+  productsWrapper.innerHTML = "";
+
+  if (searchTerm === "" && e.type === "click") {
+    // Show all products if the input field is empty and the button is clicked
+    products.forEach((product) => {
+      createProduct(product);
+    });
+  } else {
+    searchProducts(searchTerm); // Show filtered products if the input field is not empty
+  }
+}
+
+// Attach event listeners to the search button
+searchInput.addEventListener("input", handleSearchEvent);
+
+// Filter Products By Categories by js
+
+const displayCategories = () => {
+  const categories = [...new Set(products.map((product) => product.category))];
+  const categoriesWrapper = document.getElementById("categories-warapper");
+  categories.forEach((category) => {
+    const checkboxWrapper = document.createElement("div");
+    checkboxWrapper.className = "form-check";
+    const checkbox = document.createElement("input");
+    checkbox.className = "form-check-input filter";
+    checkbox.type = "checkbox";
+    checkbox.value = category;
+    checkbox.id = category;
+
+    const label = document.createElement("label");
+    label.className = "form-check-label";
+    label.htmlFor = category;
+    label.textContent = category;
+
+    checkboxWrapper.appendChild(checkbox);
+    checkboxWrapper.appendChild(label);
+
+    categoriesWrapper.appendChild(checkboxWrapper);
+
+    // Attach an event listener to the checkbox
+    checkbox.addEventListener("click", () => {
+      const checkedCategories = [];
+      const productsWrapper = document.getElementById("card");
+      productsWrapper.innerHTML = "";
+
+      // Get all the checked categories
+      const categoryCheckboxes = document.querySelectorAll(".filter");
+      categoryCheckboxes.forEach((checkbox) => {
+        if (checkbox.checked) {
+          checkedCategories.push(checkbox.value);
+        }
+      });
+
+      // Filter the products based on the checked categories
+      const filteredProducts = products.filter((product) => {
+        return checkedCategories.includes(product.category);
+      });
+
+      // If no categories are checked, show all products
+      if (checkedCategories.length === 0) {
+        products.forEach((product) => {
+          createProduct(product);
+        });
+      } else {
+        filteredProducts.forEach((product) => {
+          createProduct(product);
+        });
+      }
+    });
+  });
+};
+
+// Sort Products By Price
+// Get the price checkboxes
+const priceCheckboxes = document.querySelectorAll(
+  '#allPrices input[type="checkbox"]'
+);
+
+// Add an event listener to the price checkboxes
+priceCheckboxes.forEach((checkbox) => {
+  checkbox.addEventListener("click", () => {
+    const checkedPrices = [];
+    const productsWrapper = document.getElementById("card");
+    productsWrapper.innerHTML = "";
+
+    // Get the checked prices
+    priceCheckboxes.forEach((checkbox) => {
+      if (checkbox.checked) {
+        checkedPrices.push(checkbox.id);
+      }
+    });
+
+    // Sort the products based on the checked prices
+    let sortedProducts = products;
+    if (checkedPrices.includes("asc")) {
+      sortedProducts = products.sort((a, b) => a.price - b.price);
+    } else if (checkedPrices.includes("des")) {
+      sortedProducts = products.sort((a, b) => b.price - a.price);
+    }
+
+    // Create the products
+    sortedProducts.forEach((product) => {
+      createProduct(product);
+    });
+  });
+});
+
 displayProducts();
