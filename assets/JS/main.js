@@ -1,10 +1,10 @@
 const baseUrl = "https://dummyjson.com/products/category";
 const apiUrls = [
-  `${baseUrl}/smartphones?skip=4`,
-  `${baseUrl}/mens-shirts`,
   `${baseUrl}/laptops`,
-  `${baseUrl}/womens-dresses`,
+  `${baseUrl}/mens-shirts`,
   `${baseUrl}/mens-watches`,
+  `${baseUrl}/womens-dresses`,
+  `${baseUrl}/smartphones?skip=4`,
   `${baseUrl}/womens-bags`,
 ];
 
