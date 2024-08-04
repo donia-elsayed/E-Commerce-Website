@@ -1,4 +1,8 @@
 @import "colors.css";
+* {
+  font-family: Poppins;
+  font-weight: 400;
+}
 .home__left-side {
   border: 1px solid var(--secondary-color);
 }

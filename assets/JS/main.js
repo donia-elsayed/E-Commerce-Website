@@ -1,14 +1,12 @@
 const baseUrl = "https://dummyjson.com/products/category";
 const apiUrls = [
-  `${baseUrl}/smartphones`,
+  `${baseUrl}/smartphones?skip=4`,
   `${baseUrl}/mens-shirts`,
   `${baseUrl}/laptops`,
   `${baseUrl}/womens-dresses`,
   `${baseUrl}/mens-watches`,
   `${baseUrl}/womens-bags`,
 ];
-
-
 
 const fatchAllProducts = async () => {
   const allResult = await Promise.all(
@@ -21,26 +19,50 @@ const fatchAllProducts = async () => {
   const allProducts = allResult.flatMap((result) => result.products || result);
   return allProducts;
 };
- 
-// added a function to Store Data in local storage
-  const products = [];
-  const displayProducts = async () => {
+
+export const products = [];
+const displayProducts = async () => {
   const allProducts = await fatchAllProducts();
   products.push(...allProducts);
-  const allProductsJSON = JSON.stringify(allProducts);
-  localStorage.setItem('allProducts', allProductsJSON);
   products.forEach((product) => {
     createProduct(product);
   });
+  displayCategories();
 };
 
 // function of addToCart and saving it to local storage
-function addToCart(product) {
-  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+const addToCart = (product) => {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
   cart.push(product);
-  localStorage.setItem('cart', JSON.stringify(cart));}
+  localStorage.setItem("cart", JSON.stringify(cart));
+};
+
+const displayCategories = () => {
+  const categories = [...new Set(products.map((product) => product.category))];
+  const categoriesWrapper = document.getElementById("categories-warapper");
+  categories.forEach((category) => {
+    const checkboxWrapper = document.createElement("div");
+    checkboxWrapper.classList.add("form-check");
+    const checkbox = document.createElement("input");
+    checkbox.classList.add("form-check-input", "filter");
+    checkbox.type = "checkbox";
+    checkbox.value = `${category}`;
+    checkbox.id = `${category}`;
+
+    const label = document.createElement("label");
+    label.classList.add("form-check-label");
+    label.htmlFor = `${category}`;
+    label.textContent = `${category}`;
+
+    checkboxWrapper.appendChild(checkbox);
+    checkboxWrapper.appendChild(label);
+
+    categoriesWrapper.appendChild(checkboxWrapper);
+  });
+};
 
 const createProduct = (product) => {
+  const { title, images, price, description, category } = product;
   const card = document.getElementById("card");
   // Create the main container
   const productWrapper = document.createElement("div");
@@ -50,8 +72,8 @@ const createProduct = (product) => {
   imgWrapper.classList.add("product__img__wrapper", "text-center", "rounded-3");
   // Create the image element
   const productImg = document.createElement("img");
-  productImg.setAttribute("src", product.images[0]);
-  const classes = product.category === "smartphones" ? ["w-40", "vh-35"] : ["w-75"];
+  productImg.setAttribute("src", images[0]);
+  const classes = category === "smartphones" ? ["w-40", "vh-35"] : ["w-75"];
   classes.forEach((cls) => productImg.classList.add(cls));
   imgWrapper.appendChild(productImg);
 
@@ -89,17 +111,18 @@ const createProduct = (product) => {
     "w-100",
     "mt-2"
   );
-  addToCartBtn.addEventListener("click", addToCart(product))
   addToCartBtn.innerText = "Add To Cart";
+  addToCartBtn.setAttribute("data-id", product.id);
+  addToCartBtn.addEventListener("click", () => addToCart(product));
   productWrapper.appendChild(addToCartBtn);
 
   // Create product details
   const productDetails = document.createElement("div");
   productDetails.classList.add("d-flex", "justify-content-lg-between", "my-3");
   const productTitle = document.createElement("h5");
-  productTitle.innerText = `${product.title}`;
+  productTitle.innerText = `${title}`;
   const productPrice = document.createElement("span");
-  productPrice.innerText = `${product.price}`;
+  productPrice.innerText = `${price}`;
   productPrice.classList.add("product__price");
   productDetails.appendChild(productTitle);
   productDetails.appendChild(productPrice);
@@ -107,9 +130,8 @@ const createProduct = (product) => {
 
   // Create product description
   const productDescription = document.createElement("p");
-  productDescription.innerText = `${product.description}`;
+  productDescription.innerText = `${description}`;
   productWrapper.appendChild(productDescription);
   card.appendChild(productWrapper);
 };
 displayProducts();
-

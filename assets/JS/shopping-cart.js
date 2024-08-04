@@ -1,105 +1,111 @@
-const storedProductsJSON = localStorage.getItem('allProducts');
-const storedProducts = JSON.parse(storedProductsJSON);
+const displayCart = () => {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartList = document.getElementById("product__tbody");
 
-if (storedProducts) {
-  console.log('Stored products:', storedProducts);
-} else {
-  console.warn('No stored products found.');
-}
-
-
-// // shopping-cart.js
-// const storedCartJSON = localStorage.getItem('cart');
-// const cart = JSON.parse(storedCartJSON) || []; // Initialize as an empty array if no data is stored
-
-// // Now you can use the 'cart' array in your shopping cart logic
-// console.log('Cart contents:', cart);
-
-
-
-
-function displayCart() {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const cartList = document.getElementById('product__tbody');
-  
-    if (cart.length === 0) {
-      cartList.innerHTML = '';
-    } else {
-      cart.forEach(element => {
-        createProduct2(element)
-      });
-      
-    }
+  if (cart.length === 0) {
+    cartList.innerHTML = "<p class='my-2 text-danger'>No products Exist</p>";
+  } else {
+    cart.forEach((element) => {
+    createProduct(element);
+    });
   }
- document.addEventListener('DOMContentLoaded', displayCart);
+};
 
-
-
-
-// Add Product to Cart Functions:
-//   storedProducts.forEach((product) => {
-//   const { title, images, price ,category } = product;
-//   if (titleOfProduct === title) {
-//   createProduct2(title, price , images , category )}
-// );
-
-
-
-function createProduct2(product) {
-    const {title, price , image , category} = product
-  // Create the necessary elements
+const createProduct = (product) => {
+  const { title, price, images } = product;
   const tr = document.createElement("tr");
   tr.classList.add("align-middle");
 
-  const td1 = document.createElement("td");
+  const tdDetails = document.createElement("td");
   const img = document.createElement("img");
-  img.src = image;
+  img.src = images[0];
   img.alt = ` photo of ${title}`;
-  category === "smartphones"
-    ? img.classList.add("product__img1")
-    : img.classList.add("product__img2");
-  td1.appendChild(img);
+  img.classList.add("w-25");
+  tdDetails.appendChild(img);
   const span = document.createElement("span");
   span.textContent = title;
-  td1.appendChild(span);
+  tdDetails.classList.add("w-35");
+  tdDetails.appendChild(span);
 
-  const td2 = document.createElement("td");
-  td2.textContent = `${price}$`;
+  const tdPrice = document.createElement("td");
+  tdPrice.textContent = `${price}$`;
 
-  const td3 = document.createElement("td");
+  const tdQuantity = document.createElement("td");
   const minusButton = document.createElement("button");
   minusButton.type = "button";
   minusButton.classList.add("btn", "border-secondary", "text-center");
   minusButton.textContent = "-";
+
   const quantitySpan = document.createElement("span");
   quantitySpan.classList.add("text-center", "m-2");
-  quantitySpan.textContent = "0";
+  quantitySpan.textContent = "1";
+
   const plusButton = document.createElement("button");
   plusButton.type = "button";
   plusButton.classList.add("btn", "border-secondary", "text-center");
   plusButton.textContent = "+";
-  td3.appendChild(minusButton);
-  td3.appendChild(quantitySpan);
-  td3.appendChild(plusButton);
+  tdQuantity.appendChild(minusButton);
+  tdQuantity.appendChild(quantitySpan);
+  tdQuantity.appendChild(plusButton);
 
-  const td4 = document.createElement("td");
-  td4.textContent = `${price}$`;
+  const tdSubtotal = document.createElement("td");
+  tdSubtotal.textContent = `${price}$`;
 
+  const tdIcon = document.createElement("td");
+  const removeIcon = document.createElement("i");
+  removeIcon.classList.add("fa-solid", "fa-trash", "fs-4", "remove-icon");
+  tdIcon.appendChild(removeIcon);
   // Append the elements to the table row
-  tr.appendChild(td1);
-  tr.appendChild(td2);
-  tr.appendChild(td3);
-  tr.appendChild(td4);
+  tr.appendChild(tdDetails);
+  tr.appendChild(tdPrice);
+  tr.appendChild(tdQuantity);
+  tr.appendChild(tdSubtotal);
+  tr.appendChild(tdIcon);
 
-  // Create the <tbody> element
-  const tbodyElement = document.createElement("tbody");
-  tbodyElement.id = "product__tbody";
-
+  const tbodyElement = document.getElementById("product__tbody");
   tbodyElement.appendChild(tr);
 
-  // Find the parent table element (assuming it has the ID "product__table")
   const tableElement = document.getElementById("product__table");
-
-  // Append the <tbody> element to the table
   tableElement.appendChild(tbodyElement);
-}
+  
+  let quantity = 1;
+  
+  // Event listener for the plus button
+  plusButton.addEventListener('click', () => {
+    quantity++;
+    quantitySpan.textContent = quantity;
+    tdSubtotal.textContent = `${price * quantity}$`;
+  });
+
+  // Event listener for the minus button
+  minusButton.addEventListener('click', () => {
+    if (quantity > 0) {
+      quantity--;
+      quantitySpan.textContent = quantity;
+      tdSubtotal.textContent = `${price * quantity}$`;
+    }
+  });
+
+  
+  removeIcon.addEventListener('click', () => {
+      removeFromCart(product);
+      tr.remove();
+  });
+};
+
+
+const updateCart = (product, newQuantity) => {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart = cart.map(item => 
+    item.title === product.title ? { ...item, quantity: newQuantity } : item
+  );
+  localStorage.setItem("cart", JSON.stringify(cart));
+};
+
+const removeFromCart = (product) => {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart = cart.filter(item => item.title !== product.title);
+  localStorage.setItem("cart", JSON.stringify(cart));
+};
+
+document.addEventListener("DOMContentLoaded", displayCart);

@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="./assets/CSS/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/CSS/nav-footer.css">
     <link rel="stylesheet" href="./assets/CSS/style.css">
-    <link rel="stylesheet" href="./assets/CSS/shopping-cart.css"
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -24,9 +26,9 @@
                 </form>
                 <div class="row">
                     <div class="col-lg-3 home__left-side">
-                        <h2 class="filter-sort___header py-3">Filter & Sort</h2>
+                        <h2 class="filter-sort___header pt-1">Filter & Sort</h2>
                         <div class="accordion" id="filterAndSort">
-                            <div class="accordion-item py-2">
+                            <div class="accordion-item">
                                 <h2 class="accordion-header" id="category">
                                     <button class="accordion-button shadow-none" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#allCategories" aria-expanded="true"
@@ -36,31 +38,7 @@
                                 </h2>
                                 <div id="allCategories" class="accordion-collapse collapse show"
                                     aria-labelledby="category" data-bs-parent="#filterAndSort">
-                                    <div class="accordion-body">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="shoes">
-                                            <label class="form-check-label" for="shoes">
-                                                Shoes
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="watches">
-                                            <label class="form-check-label" for="Watches">
-                                                Watches
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="clothese">
-                                            <label class="form-check-label" for="clothese">
-                                                Clothese
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="electronics">
-                                            <label class="form-check-label" for="electronics">
-                                                Electronics
-                                            </label>
-                                        </div>
+                                    <div class="accordion-body" id="categories-warapper">
                                     </div>
                                 </div>
                             </div>
@@ -109,7 +87,7 @@
     <div data-include="footer.html"></div>
     <script src="./assets/JS/bootstrap.min.js"></script>
     <script src="./assets/JS/nav-footer.js"></script>
-    <script src="./assets/JS/main.js" defer></script>
+    <script type="module" src="./assets/JS/main.js" defer></script>
 </body>
 
 </html>
