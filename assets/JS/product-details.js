@@ -6,7 +6,7 @@ const displayProduct = (product) => {
   // Create container for secondary images
   const secondaryImagesContainer = document.createElement("div");
   secondaryImagesContainer.className =
-    "col-lg-2 col-3 d-flex flex-column align-items-center";
+  "col-lg-2 col-3 d-flex flex-column align-items-center img__container2";
   secondaryImagesContainer.id = "secondary-images";
 
   // Create and append image elements for each image
