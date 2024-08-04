@@ -70,8 +70,6 @@ const createProduct = (product) => {
   const tableElement = document.getElementById("product__table");
   tableElement.appendChild(tbodyElement);
 
-  let quantity = 1;
-
   // Event listener for the plus button
   plusButton.addEventListener("click", () => {
     product.quantity++;
@@ -121,7 +119,6 @@ const updateCartTotal = () => {
     total += item.price * (item.quantity || 1);
   });
   document.getElementById("total").textContent = `$${total}`;
-
   document.getElementById("total2").textContent = `$${total}`;
 };
 
