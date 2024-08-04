@@ -43,6 +43,10 @@ th {
 .remove-icon {
   color: var(--primary-color);
 }
+.product__img {
+  width: 10%;
+  margin: 0 30px;
+}
 @media screen and (max-width: 990px) {
   .adjust__response {
     display: flex;

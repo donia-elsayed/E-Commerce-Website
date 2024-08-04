@@ -6,14 +6,14 @@ const displayCart = () => {
     cartList.innerHTML = "<p class='my-2 text-danger'>No products Exist</p>";
   } else {
     cart.forEach((element) => {
-    createProduct(element);
+      createProduct(element);
     });
   }
   updateCartTotal();
 };
 
 const createProduct = (product) => {
-  const { title, price, images } = product;
+  const { title, price, images, category } = product;
   const tr = document.createElement("tr");
   tr.classList.add("align-middle");
 
@@ -21,7 +21,8 @@ const createProduct = (product) => {
   const img = document.createElement("img");
   img.src = images[0];
   img.alt = ` photo of ${title}`;
-  img.classList.add("w-25");
+  const imgclass = category === "smartphones" ? "product__img" : "w-25";
+  img.classList.add(imgclass);
   tdDetails.appendChild(img);
   const span = document.createElement("span");
   span.textContent = title;
@@ -70,9 +71,9 @@ const createProduct = (product) => {
   tableElement.appendChild(tbodyElement);
 
   let quantity = 1;
-  
+
   // Event listener for the plus button
-  plusButton.addEventListener('click', () => {
+  plusButton.addEventListener("click", () => {
     product.quantity++;
     quantitySpan.textContent = product.quantity;
     tdSubtotal.textContent = `${price * product.quantity}$`;
@@ -81,7 +82,7 @@ const createProduct = (product) => {
   });
 
   // Event listener for the minus button
-  minusButton.addEventListener('click', () => {
+  minusButton.addEventListener("click", () => {
     if (product.quantity > 1) {
       product.quantity--;
       quantitySpan.textContent = product.quantity;
@@ -92,17 +93,16 @@ const createProduct = (product) => {
   });
 
   // Event listener for the remove icon
-  removeIcon.addEventListener('click', () => {
+  removeIcon.addEventListener("click", () => {
     removeFromCart(product);
     tr.remove();
     updateCartTotal();
   });
 };
 
-
 const updateCart = (product) => {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cart = cart.map(item => 
+  cart = cart.map((item) =>
     item.id === product.id ? { ...item, quantity: product.quantity } : item
   );
   localStorage.setItem("cart", JSON.stringify(cart));
@@ -110,18 +110,18 @@ const updateCart = (product) => {
 
 const removeFromCart = (product) => {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cart = cart.filter(item => item.title !== product.title);
+  cart = cart.filter((item) => item.title !== product.title);
   localStorage.setItem("cart", JSON.stringify(cart));
 };
 
 const updateCartTotal = () => {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
   let total = 0;
-  cart.forEach(item => {
+  cart.forEach((item) => {
     total += item.price * (item.quantity || 1);
   });
   document.getElementById("total").textContent = `$${total}`;
-  
+
   document.getElementById("total2").textContent = `$${total}`;
 };
 
