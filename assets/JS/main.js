@@ -100,7 +100,9 @@ const createProduct = (product, index) => {
   const productDescription = document.createElement("p");
   productDescription.innerText = `${description}`;
   productWrapper.appendChild(productDescription);
-  card.appendChild(productWrapper);
+  if (window.location.href.includes("index.html")) {
+    card.appendChild(productWrapper);
+  }
 };
 
 const navigateToDetails = (index) => {
