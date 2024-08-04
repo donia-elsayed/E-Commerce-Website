@@ -6,20 +6,20 @@ const displayCart = () => {
     cartList.innerHTML = "<p class='my-2 text-danger'>No products Exist</p>";
   } else {
     cart.forEach((element) => {
-      createProduct(element);
+    createProduct(element);
     });
   }
   updateCartTotal();
 };
 
 const createProduct = (product) => {
-  const { title, price, images, category } = product;
+  const { title, price, images } = product;
   const tr = document.createElement("tr");
   tr.classList.add("align-middle");
 
   const tdDetails = document.createElement("td");
   const img = document.createElement("img");
-  img.src = category === "smartphones" ? images[2] : images[0];
+  img.src = images[0];
   img.alt = ` photo of ${title}`;
   img.classList.add("w-25");
   tdDetails.appendChild(img);
@@ -126,4 +126,3 @@ const updateCartTotal = () => {
 };
 
 document.addEventListener("DOMContentLoaded", displayCart);
-

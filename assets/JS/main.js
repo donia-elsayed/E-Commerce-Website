@@ -82,8 +82,7 @@ const createProduct = (product) => {
   // Create the image element
   const productImg = document.createElement("img");
   productImg.setAttribute("src", images[0]);
-  const classes =
-    product.category === "smartphones" ? ["w-40", "vh-35"] : ["w-75"];
+  const classes = category === "smartphones" ? ["w-40", "vh-35"] : ["w-75"];
   classes.forEach((cls) => productImg.classList.add(cls));
   imgWrapper.appendChild(productImg);
 
