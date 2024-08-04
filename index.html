@@ -16,10 +16,10 @@
         <section class="home mt-3">
             <div class="container">
                 <form class="d-flex my-4 mx-auto w-50 w-sm-auto" role="search">
-                    <input class="form-control input__search me-2 shadow-none" type="search"
+                    <input id="search-input" class="form-control input__search me-2 shadow-none" type="search"
                         placeholder="What are you looking for?" aria-label="Search">
                     <i class="fa-solid fa-magnifying-glass m-auto fs-5 search__icon"></i>
-                    <button class="btn btn__search" type="submit">Search</button>
+                    <button id="search-button" class="btn btn__search" type="submit">Search</button>
                 </form>
                 <div class="row">
                     <div class="col-lg-3 home__left-side">
@@ -108,7 +108,7 @@
     <div data-include="footer.html"></div>
     <script src="./assets/JS/bootstrap.min.js"></script>
     <script src="./assets/JS/nav-footer.js"></script>
-    <script type="module" src="./assets/JS/main.js"></script>
+    <script type="module" src="./assets/JS/main.js" defer></script>
 </body>
 
 </html>
