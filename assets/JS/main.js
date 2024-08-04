@@ -29,7 +29,6 @@ const displayProducts = async () => {
   });
   displayCategories();
 };
-
 const createProduct = (product) => {
   const { title, images, price, description, category } = product;
   const card = document.getElementById("card");
@@ -50,9 +49,23 @@ const createProduct = (product) => {
   // Create the icon wrapper
   const iconsWrapper = document.createElement("div");
   iconsWrapper.classList.add("d-flex", "flex-column");
-  iconsWrapper.innerHTML = `
-      <a href="#"><i class="fa-solid fa-heart mb-2"></i></a>
-      <a href="#"><i class="fa-solid fa-eye"></i></a>`;
+  // Create heart icon link
+  const heartIconLink = document.createElement("a");
+  heartIconLink.setAttribute("href", "#");
+  // Create heart icon
+  const heartIcon = document.createElement("i");
+  heartIcon.classList.add("fa-solid", "fa-heart", "mb-2");
+  // Append heart icon to heartIconLink
+  heartIconLink.appendChild(heartIcon);
+  // Create eye icon link
+  const eyeIconLink = document.createElement("a");
+  eyeIconLink.setAttribute("href", "#");
+  // Create eye icon
+  const eyeIcon = document.createElement("i");
+  eyeIcon.classList.add("fa-solid", "fa-eye");
+  eyeIconLink.appendChild(eyeIcon);
+  iconsWrapper.appendChild(heartIconLink);
+  iconsWrapper.appendChild(eyeIconLink);
   imgWrapper.appendChild(iconsWrapper);
 
   // Create "Add to Cart" button
@@ -87,7 +100,6 @@ const createProduct = (product) => {
   productWrapper.appendChild(productDescription);
   card.appendChild(productWrapper);
 };
-displayProducts();
 
 // Search, Filter And Sort Function
 
@@ -107,7 +119,6 @@ const searchProducts = (searchTerm) => {
 
 // Get the search input field
 const searchInput = document.getElementById("search-input");
-const searchButton = document.getElementById("search-button");
 
 // Function to handle search input and button click
 const handleSearchEvent = (e) => {
@@ -116,13 +127,15 @@ const handleSearchEvent = (e) => {
   const productsWrapper = document.getElementById("card");
   productsWrapper.innerHTML = "";
 
-  if (searchTerm !== "") {
+  if (searchTerm === "") {
+    displayProducts();
+  } else {
     searchProducts(searchTerm);
   }
 };
 
 // Attach event listeners to the search button
-searchButton.addEventListener("click", handleSearchEvent);
+searchInput.addEventListener("input", handleSearchEvent);
 
 // Filter Products By Categories by js
 
@@ -182,7 +195,6 @@ const displayCategories = () => {
 };
 
 // Sort Products By Price
-
 // Get the price checkboxes
 const priceCheckboxes = document.querySelectorAll(
   '#allPrices input[type="checkbox"]'
@@ -216,3 +228,5 @@ priceCheckboxes.forEach((checkbox) => {
     });
   });
 });
+
+displayProducts();
