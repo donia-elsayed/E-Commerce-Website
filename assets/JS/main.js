@@ -25,8 +25,8 @@ const displayProducts = async () => {
   const allProducts = await fatchAllProducts();
   products.push(...allProducts);
   document.dispatchEvent(new Event("productsLoaded"));
-  products.forEach((product) => {
-    createProduct(product);
+  products.forEach((product, index) => {
+    createProduct(product, index);
   });
   displayCategories();
 };
@@ -46,7 +46,7 @@ const addToCart = (product) => {
   localStorage.setItem("cart", JSON.stringify(cart));
 };
 
-const createProduct = (product) => {
+const createProduct = (product, index) => {
   const { title, images, price, description, category } = product;
   const card = document.getElementById("card");
   // Create the main container
@@ -159,7 +159,9 @@ function handleSearchEvent(e) {
 }
 
 // Attach event listeners to the search button
-searchInput.addEventListener("input", handleSearchEvent);
+if (searchInput) {
+  searchInput.addEventListener("input", handleSearchEvent);
+}
 
 // Filter Products By Categories by js
 
@@ -182,9 +184,9 @@ const displayCategories = () => {
 
     checkboxWrapper.appendChild(checkbox);
     checkboxWrapper.appendChild(label);
-
-    categoriesWrapper.appendChild(checkboxWrapper);
-
+    if (window.location.href.includes("index.html")) {
+      categoriesWrapper.appendChild(checkboxWrapper);
+    }
     // Attach an event listener to the checkbox
     checkbox.addEventListener("click", () => {
       const checkedCategories = [];
