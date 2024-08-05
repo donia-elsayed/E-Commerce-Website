@@ -2,7 +2,10 @@ import { products } from "../JS/main.js";
 
 const displayProduct = (product) => {
   const productWrapper = document.getElementById("product-details");
-  const imageClass = product.images.length === 3 ? "w-50" : "w-25";
+  const imageClass =
+    product.images.length === 3 && product.category === "smartphones"
+      ? "w-35"
+      : "w-50";
   // Create container for secondary images
   const secondaryImagesContainer = document.createElement("div");
   secondaryImagesContainer.className =
@@ -25,7 +28,8 @@ const displayProduct = (product) => {
   mainImageContainer.className = "offset-lg-1 col-lg-4 col-md-6 col my-auto";
 
   const mainImage = document.createElement("img");
-  mainImage.className = "w-40";
+  const mainImageClass = product.category === "smartphones" ? "w-40" : "w-50";
+  mainImage.className = imageClass;
   mainImage.src = product.images[0];
   mainImage.id = "main-image";
   mainImage.alt = "Havic main image";
@@ -121,8 +125,8 @@ const changeMainImage = (imageUrl) => {
 
 document.addEventListener("productsLoaded", () => {
   const urlParams = new URLSearchParams(window.location.search);
-  const index = urlParams.get("id");
-  const product = products[index];
+  const productId = urlParams.get("id");
+  const product = products.find((product) => product.id == productId);
   if (product) {
     displayProduct(product);
   }
