@@ -4,8 +4,8 @@ const apiUrls = [
   `${baseUrl}/mens-shirts`,
   `${baseUrl}/mens-watches`,
   `${baseUrl}/womens-dresses`,
-  `${baseUrl}/smartphones?skip=4`,
   `${baseUrl}/womens-bags`,
+  `${baseUrl}/smartphones?skip=4`,
 ];
 
 export const products = [];
@@ -25,8 +25,8 @@ const displayProducts = async () => {
   const allProducts = await fatchAllProducts();
   products.push(...allProducts);
   document.dispatchEvent(new Event("productsLoaded"));
-  products.forEach((product, index) => {
-    createProduct(product, index);
+  products.forEach((product) => {
+    createProduct(product);
   });
   displayCategories();
 };
@@ -46,8 +46,8 @@ const addToCart = (product) => {
   localStorage.setItem("cart", JSON.stringify(cart));
 };
 
-const createProduct = (product, index) => {
-  const { title, images, price, description, category } = product;
+const createProduct = (product) => {
+  const { title, images, price, description, category, id } = product;
   const card = document.getElementById("card");
   // Create the main container
   const productWrapper = document.createElement("div");
@@ -58,7 +58,8 @@ const createProduct = (product, index) => {
   // Create the image element
   const productImg = document.createElement("img");
   productImg.setAttribute("src", images[0]);
-  const classes = category === "smartphones" ? ["w-40", "vh-35"] : ["w-75"];
+  const classes =
+    category === "smartphones" ? ["w-30", "vh-30"] : ["w-75", "vh-30"];
   classes.forEach((cls) => productImg.classList.add(cls));
   imgWrapper.appendChild(productImg);
 
@@ -77,7 +78,7 @@ const createProduct = (product, index) => {
   // Create eye icon link
   const eyeIconLink = document.createElement("a");
   eyeIconLink.setAttribute("href", "#");
-  eyeIconLink.addEventListener("click", () => navigateToDetails(index));
+  eyeIconLink.addEventListener("click", () => navigateToDetails(id));
   // Create eye icon
   const eyeIcon = document.createElement("i");
   eyeIcon.classList.add("fa-solid", "fa-eye");
@@ -221,7 +222,6 @@ const displayCategories = () => {
 };
 
 // Sort Products By Price
-// Get the price checkboxes
 const priceCheckboxes = document.querySelectorAll(
   '#allPrices input[type="checkbox"]'
 );
@@ -240,21 +240,30 @@ priceCheckboxes.forEach((checkbox) => {
       }
     });
 
-    // Sort the products based on the checked prices
-    let sortedProducts = products;
-    if (checkedPrices.includes("asc")) {
-      sortedProducts = products.sort((a, b) => a.price - b.price);
-    } else if (checkedPrices.includes("des")) {
-      sortedProducts = products.sort((a, b) => b.price - a.price);
-    }
+    // If neither checkbox is checked, display all products in their natural order
+    if (checkedPrices.length === 0) {
+      products.forEach((product) => {
+        createProduct(product);
+      });
+    } else {
+      // Create a copy of the products array
+      const productsCopy = products.slice();
 
-    // Create the products
-    sortedProducts.forEach((product) => {
-      createProduct(product);
-    });
+      // Sort the copy of the products array based on the checked prices
+      if (checkedPrices.includes("asc")) {
+        productsCopy.sort((a, b) => a.price - b.price);
+      } else if (checkedPrices.includes("des")) {
+        productsCopy.sort((a, b) => b.price - a.price);
+      }
+
+      // Create the products from the sorted copy of the array
+      productsCopy.forEach((product) => {
+        createProduct(product);
+      });
+    }
   });
 });
-const navigateToDetails = (index) => {
-  window.location.href = `product-details.html?id=${index}`;
+const navigateToDetails = (productId) => {
+  window.location.href = `product-details.html?id=${productId}`;
 };
 document.addEventListener("DOMContentLoaded", displayProducts);
