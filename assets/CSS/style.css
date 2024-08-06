@@ -62,3 +62,11 @@
   font-weight: 500;
   margin-right: 10px;
 }
+.home form {
+  width: 50%;
+}
+@media (max-width: 992px) {
+  .home form {
+    width: 100%;
+  }
+}
